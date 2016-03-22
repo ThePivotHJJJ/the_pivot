@@ -9,10 +9,10 @@ feature "Visitor can register" do
     fill_in "Password",  with: "password"
     click_on "Create Account"
 
-    expect(page).to have_content("logged_in_as_Brock")
+    expect(page).to have_content("Welcome, Brock")
     expect(current_path).to eq("/dashboard")
   end
-  
+
   context "with invalid information" do
     scenario "they see an error message" do
       visit "/"
