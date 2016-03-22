@@ -12,4 +12,18 @@ feature "Visitor can register" do
     expect(page).to have_content("logged_in_as_Brock")
     expect(current_path).to eq("/dashboard")
   end
+  
+  context "with invalid information" do
+    scenario "they see an error message" do
+      visit "/"
+
+      click_on "sign_up"
+      fill_in "Username",  with: "Brock"
+      fill_in "Password",  with: ""
+      click_on "Create Account"
+
+      expect(page).to have_content("Invalid Input")
+      expect(current_path).to_not eq("/dashboard")
+    end
+  end
 end
