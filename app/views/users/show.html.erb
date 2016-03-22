@@ -1,4 +1,10 @@
 <div class="row text-center">
-<h1>logged_in_as_<%= current_user.username %></h1>
-<h3><%= link_to "view_my_orders", orders_path %></h3>
+<h1>Welcome, <%= current_user.username %></h1>
+<h2>Recently Bought</h2>
+<h2>Recently Sold</h2>
+<h2>Recently Viewed</h2>
+<h3> <%= link_to "Edit My Profile" %> </h3>
+<h3> <%= link_to "My Bids" %> </h3>
+<h3><%= link_to "My Orders", orders_path %></h3>
+<h3> <%= link_to "Manage My Shop" %> </h3>
 <div>
