@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create, :new]
 
-  resources :gifs, only: [:index, :show, :create]
+  resources :items, only: [:index]
 
   put "/retire", to: "gifs#update"
 
