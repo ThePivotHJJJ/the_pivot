@@ -1,19 +1,19 @@
 <div class="jumbotron hero">
   <div class="container">
     <div class="col-md-7">
-      <h1 class="brand">gifs_4_good</h1>
+      <h1 class="brand">Put a Bid On It</h1>
     </div>
     <div class=" col-md-offset-3 col-md-8">
-      <h3 class="brand">COMMIT_yourself</h3>
+      <h3 class="brand">tagline here</h3>
     </div>
   </div>
 </div>
 <nav class="navbar navbar-inverse col-md-12">
   <div class="container">
     <ul class="nav navbar-nav navbar-right gif-links">
-      <li><%= link_to "shop_all_items", root_path, class: "glyphicon" %></li>
-      <li><%= link_to "shop_by_tag", tags_path, class: "glyphicon" %></li>
-      <li><%= link_to "shop_by_charity", charities_path, class: "glyphicon" %></li>
+      <li><%= link_to "All Shops", shops_path %></li>
+      <li><%= link_to "All Items", items_path, class: "glyphicon" %></li>
+      <li><%= link_to "All Tags", tags_path, class: "glyphicon" %></li>
       <% if @cart.has_gifs? %>
         <li><%= link_to " cart(#{@cart.total_items})", cart_path, class: "glyphicon glyphicon-shopping-cart" %></li>
       <% end %>

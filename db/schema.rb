@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309040009) do
+ActiveRecord::Schema.define(version: 20160322215013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(version: 20160309040009) do
 
   add_index "gifs", ["charity_id"], name: "index_gifs_on_charity_id", using: :btree
 
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_gifs", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "gif_id"
@@ -72,6 +78,12 @@ ActiveRecord::Schema.define(version: 20160309040009) do
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :gifs, only: [:new, :create, :edit, :update, :destroy]
   end
 
+  resources :shops, only: [:index]
+
   resources :cart_gifs, only: [:create]
   get "/cart", to: "cart_gifs#show"
   delete "/cart", to: "cart_gifs#destroy"
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create, :new]
 
-  resources :gifs, only: [:index, :show, :create]
+  resources :items, only: [:index]
 
   put "/retire", to: "gifs#update"
 
