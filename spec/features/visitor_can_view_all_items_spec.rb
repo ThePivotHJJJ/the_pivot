@@ -6,7 +6,7 @@ feature "visitor can view all items" do
     Item.create!(name: "cat")
     Item.create!(name: "snake")
 
-    visit items_path
+    visit root_path
 
     click_on "Items"
 
