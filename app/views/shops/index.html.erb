@@ -1,5 +1,12 @@
-<h1>All Shops</h1>
-
-<% @shops.each do |shop| %>
-  <p><%= link_to shop.name, shops_path(shop) %></p>
-<% end %>
+<div class="container">
+  <div class="gifs" id="shop-list">
+   <div class="row text-center">
+      <h1>All Shops</h1>
+      <% @shops.each do |shop| %>
+        <div id="shop">
+          <%= link_to shop.name, shops_path(shop) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

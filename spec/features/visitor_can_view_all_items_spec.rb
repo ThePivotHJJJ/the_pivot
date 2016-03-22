@@ -12,7 +12,7 @@ feature "visitor can view all items" do
     expect(current_path).to eq(items_path)
 
     within('div#item-list') do
-      expect page.should have_css("#item", count: 14)
+      expect(page).to have_css("#item", count: 14)
     end
 
     Item.all.each do |item|
@@ -20,4 +20,4 @@ feature "visitor can view all items" do
       expect(page).to have_link(item.name)
     end
   end
-end  
+end
