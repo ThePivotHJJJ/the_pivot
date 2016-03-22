@@ -1,3 +1,46 @@
+# class Seed
+#   def start
+#     create_tags
+#     create_gifs
+#     create_users
+#     create_orders
+#     create_order_gifs
+#   end
+
+#   def create_tags
+#     10.times { Tag.create!(name: Faker::Hipster.word)} 
+#   end
+
+#   def create_gifs
+#     10.times do
+#       Gif.create!(title: Faker::Lorem.sentence,
+#         description: Faker::Hipster.word,
+#         price: Random.rand(1..1000),
+#         image: Faker::Avatar.image
+#         tags: Tag.all.sample)
+#   end
+
+#   def create_users
+#     50.times do
+#       User.create!(username: Faker::Internet.user_name,
+#         password: Faker::Internet.password)
+#     end
+#   end
+
+#   def create_orders
+
+#   end
+
+#   def create_order_gifs
+
+#   end
+# end
+
+# Seed.new.start
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 # 10.times do
 #   Tag.create(name: Faker::Hipster.word)
 # end
@@ -27,6 +70,6 @@
 # end
 
 
-Charity.create(name: "Colorado Coalition Against Sexual Assault", description: "The Colorado Coalition Against Sexual Assault (CCASA) is a membership organization promoting safety, justice and healing for survivors while working toward the elimination of sexual violence.", logo: "http://www.ccasa.org/wp-content/uploads/2015/02/logo2.png")
-Charity.create(name: "Phoenix Multisport", description: 'Phoenix Multisport fosters a supportive, physically active community for individuals who are recovering from alcohol and substance abuse and those who choose to live a sober life. Through pursuits such as climbing, hiking, running, strength training, yoga, road/mountain biking, socials and other activities, we seek to help our members develop and maintain the emotional strength they need to stay sober.', logo: "https://www.phoenixmultisport.org/images/pms_logo.png")
-Charity.create(name: "Deworm the World Initiative", description: 'Part of Evidence Action, Deworm the World Initiative is ranked as a top charity at GiveWell. A large body of evidence shows that eradicating intestinal worms in children is one of the potential biggest vectors for change in strugging communities. "Intestinal worms are debilitating, widespread, and under-treated. School-based deworming is safe, cost-effective and scale-able."', logo: "https://give.evidenceaction.org/uploads/4/3/9/6/43962849/1448300461.png")
+# Charity.create(name: "Colorado Coalition Against Sexual Assault", description: "The Colorado Coalition Against Sexual Assault (CCASA) is a membership organization promoting safety, justice and healing for survivors while working toward the elimination of sexual violence.", logo: "http://www.ccasa.org/wp-content/uploads/2015/02/logo2.png")
+# Charity.create(name: "Phoenix Multisport", description: 'Phoenix Multisport fosters a supportive, physically active community for individuals who are recovering from alcohol and substance abuse and those who choose to live a sober life. Through pursuits such as climbing, hiking, running, strength training, yoga, road/mountain biking, socials and other activities, we seek to help our members develop and maintain the emotional strength they need to stay sober.', logo: "https://www.phoenixmultisport.org/images/pms_logo.png")
+# Charity.create(name: "Deworm the World Initiative", description: 'Part of Evidence Action, Deworm the World Initiative is ranked as a top charity at GiveWell. A large body of evidence shows that eradicating intestinal worms in children is one of the potential biggest vectors for change in strugging communities. "Intestinal worms are debilitating, widespread, and under-treated. School-based deworming is safe, cost-effective and scale-able."', logo: "https://give.evidenceaction.org/uploads/4/3/9/6/43962849/1448300461.png")
