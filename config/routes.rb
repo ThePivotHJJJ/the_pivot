@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'shops/index'
+
   root to: "gifs#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :update, :show]
     resources :gifs, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :shops, only: [:index]
 
   resources :cart_gifs, only: [:create]
   get "/cart", to: "cart_gifs#show"
