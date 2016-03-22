@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'shops/index'
-
   root to: "gifs#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
