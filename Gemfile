@@ -54,6 +54,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem "mocha"
   gem "rspec-rails"
+  gem "simplecov", require: false, group: :test
  end
 
 group :development do

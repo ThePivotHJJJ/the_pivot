@@ -6,7 +6,7 @@ feature "Visitor can register" do
 
     click_on "sign_up"
     fill_in "Username",  with: "Brock"
-    fill_in "Password", with: "password"
+    fill_in "Password",  with: "password"
     click_on "Create Account"
 
     expect(page).to have_content("logged_in_as_Brock")
