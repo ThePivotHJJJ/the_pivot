@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323211912) do
+ActiveRecord::Schema.define(version: 20160323213116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "gif_tags", force: :cascade do |t|
+  create_table "item_tags", force: :cascade do |t|
     t.integer  "tag_id"
-    t.integer  "gif_id"
+    t.integer  "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "gif_tags", ["gif_id"], name: "index_gif_tags_on_gif_id", using: :btree
-  add_index "gif_tags", ["tag_id"], name: "index_gif_tags_on_tag_id", using: :btree
+  add_index "item_tags", ["item_id"], name: "index_item_tags_on_item_id", using: :btree
+  add_index "item_tags", ["tag_id"], name: "index_item_tags_on_tag_id", using: :btree
 
-  create_table "gifs", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "price"
@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 20160323211912) do
     t.integer  "role",            default: 0
   end
 
-  add_foreign_key "gif_tags", "gifs"
-  add_foreign_key "gif_tags", "tags"
-  add_foreign_key "order_gifs", "gifs"
+  add_foreign_key "item_tags", "items"
+  add_foreign_key "item_tags", "tags"
+  add_foreign_key "order_gifs", "items", column: "gif_id"
   add_foreign_key "order_gifs", "orders"
   add_foreign_key "orders", "users"
 end
