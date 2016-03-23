@@ -1,26 +1,34 @@
-<header>
-  <div class="navbar navbar-default navbar-fat navbar-clean">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar b1"></span>
-          <span class="icon-bar b2"></span>
-          <span class="icon-bar b3"></span>
-        </button>
-        <%= link_to "PABOI", root_path, class: "navbar-brand" %>
-        <small>( Put A Bid On It! )</small>
+<footer class="site-footer">
+  <div class="container">
+    <section class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="inner">
+          <h5>Join the community</h5>
+          <ul>
+            <li><%= link_to "Register", new_user_path %></li>
+            <li><%= link_to "Sell on PABOI", "#" %></li>
+          </ul>
+        </div>
       </div>
-
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Items", items_path %></li>
-          <li><%= link_to "Shops", shops_path %></li>
-          <li><%= link_to "Sell on PABOI", "#" %></li>
-          <li><%= link_to "Register", new_user_path %></li>
-          <li><%= link_to "Sign In", login_path %></li>
-          <li><%= link_to "Cart", "#" %></li>
-        </ul>
+      <div class="col-sm-6 col-md-4">
+        <div class="inner">
+          <h5>Discover</h5>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
       </div>
-    </div>
+      <div class="col-sm-12 col-md-4">
+        <div class="inner">
+          <h5>Follow PABOI</h5>
+          <ul>
+            <li><%= link_to "Facebook",  "#" %></li>
+            <li><%= link_to "Twitter",   "#" %></li>
+            <li><%= link_to "Pinterest", "#" %></li>
+            <li><%= link_to "Instagram", "#" %></li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </div>
-</header>
+</footer>
