@@ -50,7 +50,7 @@ class ActionDispatch::IntegrationTest
     num.times do
       user = create(:user)
       item = create(:item)
-      Orderitem.create(
+      OrderItem.create(
         item_id: item.id, quantity: 1, subtotal: 100
       )
       order = user.orders.create!(total_price: 100, status: 0)

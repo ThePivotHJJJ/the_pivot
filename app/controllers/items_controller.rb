@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = item.all.page params[:page]
+    @items = Item.all.page params[:page]
   end
 
   def show
@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = item.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
       tags = params[:tags].split(",")
       @item.create_tags(tags)

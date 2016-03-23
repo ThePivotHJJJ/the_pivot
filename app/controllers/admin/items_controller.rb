@@ -1,10 +1,10 @@
 class Admin::ItemsController < Admin::BaseController
   def new
-    @item = item.new
+    @item = Item.new
   end
 
   def create
-    @item = item.new(item_params)
+    @item = Item.new(item_params)
     if @item.save
       tags = params[:tags].split(", ")
       @item.create_tags(tags)

@@ -1,4 +1,4 @@
-class item < ActiveRecord::Base
+class Item < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
@@ -35,6 +35,6 @@ class item < ActiveRecord::Base
   end
 
   def self.all_active
-    item.all.each { |item| item.active }
+    Item.all.each { |item| item.active }
   end
 end

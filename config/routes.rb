@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "items#index"
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:index, :show, :create, :new]
 
-  resources :items, only: [:index]
+  resources :items, only: [:index, :show]
 
   put "/retire", to: "items#update"
 

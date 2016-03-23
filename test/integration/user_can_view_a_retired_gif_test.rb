@@ -3,7 +3,7 @@ require 'test_helper'
 class UserCanViewARetireditemTest < ActionDispatch::IntegrationTest
   test "user can not add a retired item to cart" do
     user = create(:user)
-    item = item.create(title: "Hamster Dance",
+    item = Item.create(title: "Hamster Dance",
                      description: "super sweet",
                      price: 100,
                      image: "https://placeholdit.imgix.net/~text?txtsize=60&bg=000000&txt=640%C3%97480&w=640&h=480&fm=png",

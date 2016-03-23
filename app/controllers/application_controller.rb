@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_item
-    item.find(params[:id])
+    Item.find(params[:id])
   end
 
   def format_price(number)
