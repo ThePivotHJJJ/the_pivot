@@ -27,20 +27,6 @@ h1 {
   padding-top: 100px;
 }
 
-.charity-column {
-  padding-top: 35px;
-}
-
-.charity-message {
-  border-style: dotted;
-  border-right: 2px;
-  border-left: 2px;
-  border-color: #dddddd;
-  text-align: center;
-  padding: 10px 0px 10px 0px;
-  margin: 20px 0px 40px 0px;
-}
-
 html, body {
   overflow: auto;
   height: 100%;
@@ -57,14 +43,4 @@ footer {
 
 footer h3 {
   color: #FFA500;
-}
-
-.charity-name {
-  min-height: 60px;
-}
-.charity-image {
-  min-height: 150px;
-}
-.charity-description {
-  min-height: 170px;
 }

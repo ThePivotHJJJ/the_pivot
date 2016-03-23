@@ -17,12 +17,6 @@
           <p><%= link_to "Delete", admin_gif_path(@gif.id), method: :delete, class: "btn btn-default" %>
         <% end %>
       </div>
-      <div class="container col-md-2 charity-column">
-        <% if @charity %>
-          <p><%= link_to (image_tag @charity.logo, width: 150), charity_path(@charity), class: "charity-link"%>
-          <p>Purchase of this gif will support <%= link_to @charity.name, @charity.link %>.</p>
-        <% end %>
-      </div>
       <div class="col-md-12 text-center">
         <hr>
       <h3>Tags</h3>

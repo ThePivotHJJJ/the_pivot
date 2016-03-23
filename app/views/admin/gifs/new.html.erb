@@ -12,7 +12,6 @@
   <%= text_field_tag :tags %></h4>
     <h4><%= f.label :image %></h4>
   <%= f.file_field :image %></h4>
-    <h4><%= select @gif.id, :charity, @charities.map{|charity|charity.name} %></h4>
     <h4><%= f.submit "add new gif!", class: "btn btn-primary" %></h4>
 <% end %>
 </div>

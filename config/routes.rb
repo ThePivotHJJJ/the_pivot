@@ -26,8 +26,6 @@ Rails.application.routes.draw do
 
   put "/retire", to: "gifs#update"
 
-  resources :charities, only: [:index, :show]
-
   resources :tags, only: [:index]
   get "/tag/:name", :to => "tags#show", as: :tag
 
