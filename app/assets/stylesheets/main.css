@@ -8,6 +8,10 @@
 
 /*** Site Header ***/
 
+#site .navbar {
+  margin-bottom: 0;
+}
+
 #site .navbar-default,
 #site .navbar-nav a {
   background-color: rgb(255,255,255);
@@ -32,6 +36,23 @@
   text-transform: lowercase;
 }
 
+/*** Landing Callout ***/
+
+#site .landing-callout {
+  background: url("landing_callout.jpg") 75%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+}
+
+#site .landing-callout h1 {
+  color: rgb(255,255,255);
+  font-family: 'Rufina', serif;
+  font-size: 4.5rem;
+}
+
 
 
 
@@ -54,11 +75,6 @@
 }
 a.gif-title {
   color: black;
-}
-
-h1 {
-  color: orange !important;
-  /*Shouldnt use important, but not working otherwise*/
 }
 
 .gif-show-photo {
