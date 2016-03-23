@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class AdminCanUpdateAGifTest < ActionDispatch::IntegrationTest
-  test "admin sees gif with updated title" do
+class AdminCanUpdateAitemTest < ActionDispatch::IntegrationTest
+  test "admin sees item with updated title" do
     create_and_return_admin
-    gif = create(:gif, title: "Keri's gif")
+    item = create(:item, title: "Keri's item")
 
-    visit gif_path(gif.id)
+    visit item_path(item.id)
 
     click_on "Edit"
 
@@ -13,19 +13,19 @@ class AdminCanUpdateAGifTest < ActionDispatch::IntegrationTest
     fill_in "Description", with: "this is all the lulz you could imagine!!"
     fill_in "Price", with: "100"
     fill_in "Tags", with: "lulzy, defeated, dusty"
-    attach_file "Image", "test/asset_tests/gifs/carmer-got-carmed.gif"
+    attach_file "Image", "test/asset_tests/items/carmer-got-carmed.item"
 
-    click_on "Update gif"
+    click_on "Update item"
 
     assert page.has_content? "Boulder Creek!"
-    refute page.has_content? "Keri's gif"
+    refute page.has_content? "Keri's item"
   end
 
-  test "admin can retire a gif and still see it" do
+  test "admin can retire a item and still see it" do
     create_and_return_admin
-    gif = create(:gif, title: "Da bomb")
+    item = create(:item, title: "Da bomb")
 
-    visit gif_path(gif.id)
+    visit item_path(item.id)
 
     click_on "Edit"
 
@@ -33,7 +33,7 @@ class AdminCanUpdateAGifTest < ActionDispatch::IntegrationTest
     fill_in "Description", with: "this is all the lulz you could imagine!!"
     fill_in "Price", with: "100"
     fill_in "Tags", with: "lulzy, defeated, dusty"
-    attach_file "Image", "test/asset_tests/gifs/carmer-got-carmed.gif"
+    attach_file "Image", "test/asset_tests/items/carmer-got-carmed.item"
 
   end
 end

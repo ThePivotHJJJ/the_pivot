@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true
 
   has_many :orders
-  has_many :order_gifs, through: :orders
+  has_many :order_items, through: :orders
 
   enum role: %w(default admin)
 end

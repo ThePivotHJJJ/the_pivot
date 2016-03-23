@@ -11,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-        <div id="gif-info">
+        <div id="item-info">
           <tr>
             <td><%= @order.status %></td>
             <td><%= number_to_currency(@order.total_price) %></td>
@@ -25,13 +25,13 @@
 </div>
 
 <div class="container">
-  <% @order.order_gifs.each do |order_gif| %>
+  <% @order.order_items.each do |order_item| %>
   <div class="col-md-7">
     <div class="row product">
-      <div class="col-md-5 col-md-offset-0"><p><%= image_tag order_gif.gif.image, width: 200 %></p>
+      <div class="col-md-5 col-md-offset-0"><p><%= image_tag order_item.item.image, width: 200 %></p>
       </div>
-      <h4><%= link_to order_gif.gif.title, gif_path(order_gif.gif) %></h4>
-      <h4>Quantity: <%= order_gif.quantity %></h4>
+      <h4><%= link_to order_item.item.title, item_path(order_item.item) %></h4>
+      <h4>Quantity: <%= order_item.quantity %></h4>
     </div>
   </div>
   <% end %>

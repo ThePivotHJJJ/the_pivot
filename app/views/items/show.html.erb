@@ -1,0 +1,31 @@
+<div class="row product item-show-photo">
+    <div class="col-md-offset-1 col-md-4 text-center"><p><%= image_tag @item.image, width: 400 %></p></div>
+      <div class="container col-md-offset-1 col-xs-12 col-md-3 item-show">
+        <h2><%= @item.title %></h2>
+        <p><%= @item.description %></p>
+        <h3><%= format_price(@item.price) %></h3>
+        <p>
+          <% if @item.retired? %>
+            <%= "Sorry, this item is no longer available" %>
+          <% else %>
+          <%= link_to "Add to cart", cart_items_path(item_id: @item.id), method: :post, class: "btn btn-default" %>
+          <% end %>
+        </p>
+        <br>
+        <% if current_admin? %>
+          <p><%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn btn-default" %>
+          <p><%= link_to "Delete", admin_item_path(@item.id), method: :delete, class: "btn btn-default" %>
+        <% end %>
+      </div>
+      <div class="col-md-12 text-center">
+        <hr>
+      <h3>Tags</h3>
+      <% @item.tags.each_slice(1) do |row| %>
+        <div class="col-md-4 text-center">
+          <% row.each do |tag| %>
+          <h4><%= link_to tag.name, tag_path(tag.name), class: "btn btn-default" %></h4>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+</div>

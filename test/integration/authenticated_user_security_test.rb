@@ -3,17 +3,17 @@ require 'test_helper'
 class AuthenticatedUserSecuirtyTest < ActionDispatch::IntegrationTest
   test "user cannot view other user's info" do
     user1 = create(:user)
-    gif1 = create(:gif)
+    item1 = create(:item)
     order1 = user1.orders.create(total_price: 100)
-    order_gif1 = order1.order_gifs.create(
-      gif_id: gif1.id, quantity: 1, subtotal: 100
+    order_item1 = order1.order_items.create(
+      item_id: item1.id, quantity: 1, subtotal: 100
     )
 
     user2 = create(:user)
-    gif2 = create(:gif)
+    item2 = create(:item)
     order2 = user2.orders.create(total_price: 100)
-    order_gif2 = order2.order_gifs.create(
-      gif_id: gif2.id, quantity: 1, subtotal: 100
+    order_item2 = order2.order_items.create(
+      item_id: item2.id, quantity: 1, subtotal: 100
     )
     ApplicationController.any_instance.stubs(:current_user).returns(user1)
 

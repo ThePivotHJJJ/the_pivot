@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
-  has_many :gif_tags, dependent: :destroy
-  has_many :gifs, through: :gif_tags
+  has_many :item_tags, dependent: :destroy
+  has_many :items, through: :item_tags
   validates :name, presence: true, uniqueness: true
 
   scope :alpha, -> { order("name asc") }

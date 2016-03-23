@@ -1,14 +1,14 @@
 require "test_helper"
 
-class UserKeepsCartGifsAfterLoginTest < ActionDispatch::IntegrationTest
+class UserKeepsCartitemsAfterLoginTest < ActionDispatch::IntegrationTest
   test "user sees cart quantity remain after login" do
-    gif = create(:gif)
-    gif2 = create(:gif)
+    item = create(:item)
+    item2 = create(:item)
 
-    visit gif_path(gif)
+    visit item_path(item)
     click_link "Add to cart"
 
-    visit gif_path(gif2)
+    visit item_path(item2)
     click_link "Add to cart"
 
     assert page.has_content?("cart(2)")

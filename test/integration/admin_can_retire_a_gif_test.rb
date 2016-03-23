@@ -1,20 +1,20 @@
 require 'test_helper'
 
-class AdminCanRetireAGifTest < ActionDispatch::IntegrationTest
-  test "admin can no longer find retired gif in gif index" do
+class AdminCanRetireAitemTest < ActionDispatch::IntegrationTest
+  test "admin can no longer find retired item in item index" do
     create_and_return_admin
 
-    gif2 = create(:gif, title: "Lions")
-    gif = create(:gif, title: "Geckos")
+    item2 = create(:item, title: "Lions")
+    item = create(:item, title: "Geckos")
 
-    visit gif_path(gif.id)
+    visit item_path(item.id)
     click_on "Edit"
 
-    click_on "Retire this Gif"
+    click_on "Retire this item"
 
     refute page.has_content? "Add to cart"
 
-    visit gifs_path
-    refute page.has_content? gif.title
+    visit items_path
+    refute page.has_content? item.title
   end
 end

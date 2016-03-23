@@ -1,15 +1,15 @@
 require "test_helper"
 
-class VisitorCanAdjustGifQuantityTest < ActionDispatch::IntegrationTest
-  test "cart total is adjusted based on each gifs quantity" do
-    gif = create(:gif)
-    visit gif_path(gif)
+class VisitorCanAdjustitemQuantityTest < ActionDispatch::IntegrationTest
+  test "cart total is adjusted based on each items quantity" do
+    item = create(:item)
+    visit item_path(item)
     click_link "Add to cart"
     click_link "cart(1)"
 
     assert_equal "/cart", current_path
     within page.all("tr")[1] do
-      assert page.has_content?(gif.title)
+      assert page.has_content?(item.title)
       assert page.has_content?("1")
     end
 
