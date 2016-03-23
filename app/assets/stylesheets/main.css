@@ -1,3 +1,75 @@
+/****** Pivot Styles *****/
+
+/*** Sitewide styles ***/
+
+#site {
+  background-color: rgb(239,239,235);
+  font-family: 'Roboto', sans-serif;
+}
+
+/*** Site Header ***/
+
+#site .navbar {
+  margin-bottom: 0;
+}
+
+#site .navbar-default {
+  background-color: rgb(255,255,255);
+  color: rgb(149, 117, 205);
+}
+
+#site .navbar-brand {
+  color: rgb(77, 208, 225);
+  font-family: 'Rufina', serif;
+  font-size: 3rem;
+}
+
+#site .navbar-brand:hover,
+#site .navbar-nav a:hover {
+  text-decoration: underline;
+}
+
+#site small {
+  font-family: 'Rufina', serif;
+  font-size: 1.3rem;
+  line-height: 50px;
+  text-transform: lowercase;
+}
+
+/*** Landing Callout ***/
+
+#site .landing-callout {
+  background: url("landing_callout.jpg") 75%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+}
+
+#site .landing-callout h1 {
+  color: rgb(255,255,255);
+  font-family: 'Rufina', serif;
+  font-size: 4.5rem;
+}
+
+/*** Site Footer ***/
+
+#site .site-footer {
+  background-color: rgb(239,239,235);
+  border-top: rgb(226, 226, 226) solid 1px;
+  padding-top: 30px;
+}
+
+#site .site-footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#site .site-footer ul li {
+  padding-bottom: 10px;
+}
+
 * {
   font-family: 'Alef', sans-serif;
 }
@@ -7,23 +79,17 @@
   background-size: contain;
 }
 
-
-.item-title {
+.gif-title {
   min-height: 50px;
   margin-top: 60px;
   margin-bottom: 0;
   color: black;
 }
-a.item-title {
+a.gif-title {
   color: black;
 }
 
-h1 {
-  color: orange !important;
-  /*Shouldnt use important, but not working otherwise*/
-}
-
-.item-show-photo {
+.gif-show-photo {
   padding-top: 100px;
 }
 
