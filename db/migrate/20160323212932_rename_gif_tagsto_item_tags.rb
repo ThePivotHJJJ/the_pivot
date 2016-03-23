@@ -1,5 +1,5 @@
-class RenameitemTagstoItemTags < ActiveRecord::Migration
+class RenameGifTagstoItemTags < ActiveRecord::Migration
   def change
-    rename_table :item_tags, :item_tags
+    rename_table :gif_tags, :item_tags
   end
 end

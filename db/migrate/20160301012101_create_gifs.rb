@@ -1,6 +1,6 @@
-class Createitems < ActiveRecord::Migration
+class CreateGifs < ActiveRecord::Migration
   def change
-    create_table :items do |t|
+    create_table :gifs do |t|
       t.string :title
       t.string :description
       t.integer :price

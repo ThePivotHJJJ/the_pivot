@@ -1,5 +1,5 @@
-class AddImageToitems < ActiveRecord::Migration
+class AddImageToGifs < ActiveRecord::Migration
   def change
-    add_attachment :items, :image
+    add_attachment :gifs, :image
   end
 end

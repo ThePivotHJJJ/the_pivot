@@ -1,5 +1,5 @@
-class RenameitemstoItems < ActiveRecord::Migration
+class RenameGifstoItems < ActiveRecord::Migration
   def change
-    rename_table :items, :items
+    rename_table :gifs, :items
   end
 end

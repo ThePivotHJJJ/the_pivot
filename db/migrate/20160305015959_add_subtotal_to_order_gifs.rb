@@ -1,5 +1,5 @@
-class AddSubtotalToOrderitems < ActiveRecord::Migration
+class AddSubtotalToOrderGifs < ActiveRecord::Migration
   def change
-    add_column :order_items, :subtotal, :integer
+    add_column :order_gifs, :subtotal, :integer
   end
 end
