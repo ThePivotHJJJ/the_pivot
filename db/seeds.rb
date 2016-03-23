@@ -1,19 +1,19 @@
 # class Seed
 #   def start
 #     create_tags
-#     create_gifs
+#     create_items
 #     create_users
 #     create_orders
-#     create_order_gifs
+#     create_order_items
 #   end
 
 #   def create_tags
 #     10.times { Tag.create!(name: Faker::Hipster.word)}
 #   end
 
-#   def create_gifs
+#   def create_items
 #     10.times do
-#       Gif.create!(title: Faker::Lorem.sentence,
+#       item.create!(title: Faker::Lorem.sentence,
 #         description: Faker::Hipster.word,
 #         price: Random.rand(1..1000),
 #         image: Faker::Avatar.image
@@ -31,7 +31,7 @@
 
 #   end
 
-#   def create_order_gifs
+#   def create_order_items
 
 #   end
 # end
@@ -46,25 +46,25 @@
 # end
 # #
 # 71.times do
-#   gif = Gif.create(title: Faker::Lorem.sentence,
+#   item = item.create(title: Faker::Lorem.sentence,
 #               description: " adfg",
 #               price: 100,
 #               image: "https://placeholdit.imgix.net/~text?txtsize=60&bg=000000&txt=640%C3%97480&w=640&h=480&fm=png"
 #               )
-#   gif.tags << Tag.all.shuffle.first
+#   item.tags << Tag.all.shuffle.first
 # end
 #
 #
 # 20.times do
 #   subtotal = Random.new.rand(1..10)
 #   user = User.create(username: "string", password: "password")
-#   gif = Gif.all.shuffle.first
+#   item = item.all.shuffle.first
 #   order = user.orders.create!(total_price: 3*subtotal)
-#   order.order_gifs.create!(
-#     gif_id: gif.id, quantity: 1, subtotal: subtotal
+#   order.order_items.create!(
+#     item_id: item.id, quantity: 1, subtotal: subtotal
 #   )
-#   gif = Gif.all.shuffle.first
-#   order.order_gifs.create!(
-#     gif_id: gif.id, quantity: 2, subtotal: subtotal*2
+#   item = item.all.shuffle.first
+#   order.order_items.create!(
+#     item_id: item.id, quantity: 2, subtotal: subtotal*2
 #   )
 # end

@@ -12,21 +12,21 @@
       </tr>
     </thead>
     <tbody>
-      <% @cart_gifs.each do |gif| %>
-        <div id="gif-info">
+      <% @cart_items.each do |item| %>
+        <div id="item-info">
           <tr>
-            <td><%= image_tag gif.image, width: 80 %></td>
-            <td><%= gif.title %>
-            <p><%= gif.description %></p></td>
-            <td><%= format_price(gif.price) %></td>
+            <td><%= image_tag item.image, width: 80 %></td>
+            <td><%= item.title %>
+            <p><%= item.description %></p></td>
+            <td><%= format_price(item.price) %></td>
             <td>
-              <%= form_tag(cart_path(id: gif.id), method: :patch) do %>
-                <p><%= select gif.id, gif.quantity, (1..15).to_a, selected: gif.quantity %></p>
+              <%= form_tag(cart_path(id: item.id), method: :patch) do %>
+                <p><%= select item.id, item.quantity, (1..15).to_a, selected: item.quantity %></p>
                 <p><%= submit_tag "Update Quantity" %></p>
               <% end %>
-              <p><%= link_to "Remove", cart_path(id: gif.id), method: :delete %></p>
+              <p><%= link_to "Remove", cart_path(id: item.id), method: :delete %></p>
             </td>
-            <td><%= number_to_currency(gif.subtotal) %></td>
+            <td><%= number_to_currency(item.subtotal) %></td>
           </tr>
         </div>
       <% end %>

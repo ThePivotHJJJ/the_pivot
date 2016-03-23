@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="gifs">
+  <div class="items">
    <div class="row text-center">
      <h1>all_items</h1>
-    <% @gifs.each do |gif| %>
-    <%= render partial: './gif_column', locals: { gif: gif } %>
+    <% @items.each do |item| %>
+    <%= render partial: './item_column', locals: { item: item } %>
     <% end %>
     </div>
   </div>
   <div class="col-md-4 col-md-offset-8 row">
-    <%= paginate @gifs %>
+    <%= paginate @items %>
   </div>
 </div>

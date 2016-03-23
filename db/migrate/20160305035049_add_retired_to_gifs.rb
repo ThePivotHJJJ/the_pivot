@@ -1,5 +1,5 @@
-class AddRetiredToGifs < ActiveRecord::Migration
+class AddRetiredToitems < ActiveRecord::Migration
   def change
-    add_column :gifs, :retired, :boolean, default: false
+    add_column :items, :retired, :boolean, default: false
   end
 end

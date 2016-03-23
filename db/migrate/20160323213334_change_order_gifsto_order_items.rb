@@ -1,5 +1,5 @@
-class ChangeOrderGifstoOrderItems < ActiveRecord::Migration
+class ChangeOrderitemstoOrderItems < ActiveRecord::Migration
   def change
-    rename_table :order_gifs, :order_items
+    rename_table :order_items, :order_items
   end
 end

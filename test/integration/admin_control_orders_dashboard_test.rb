@@ -9,7 +9,7 @@ class AdminControlOrdersDashboardTest < ActionDispatch::IntegrationTest
     visit admin_dashboard_path
     click_link "View all orders"
 
-    assert page.has_content? ".all_orders for gifs_for_good"
+    assert page.has_content? ".all_orders for items_for_good"
     assert_equal admin_orders_path, current_path
     assert page.has_content? "Ordered: 6"
     assert page.has_link?(recent_order.id, admin_order_path(recent_order))
@@ -26,11 +26,11 @@ class AdminControlOrdersDashboardTest < ActionDispatch::IntegrationTest
     click_link(recent_order.id)
 
     assert_equal admin_order_path(recent_order), current_path
-    recent_order.order_gifs.each do |order_gif|
-      assert page.has_link?(order_gif.gif.title)
-      assert page.has_css?("img[src='#{order_gif.gif.image}']")
-      assert page.has_content?(order_gif.quantity)
-      assert page.has_content?(order_gif.subtotal)
+    recent_order.order_items.each do |order_item|
+      assert page.has_link?(order_item.item.title)
+      assert page.has_css?("img[src='#{order_item.item.image}']")
+      assert page.has_content?(order_item.quantity)
+      assert page.has_content?(order_item.subtotal)
     end
 
     assert page.has_content? recent_order.status

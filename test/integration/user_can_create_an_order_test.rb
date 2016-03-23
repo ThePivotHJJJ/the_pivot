@@ -6,9 +6,9 @@ class UserCanCreateAnOrderTest < ActionDispatch::IntegrationTest
     user = create(:user)
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-    gif = create(:gif)
+    item = create(:item)
 
-    visit gif_path(gif)
+    visit item_path(item)
     click_link "Add to cart"
     visit "/cart"
 
@@ -22,8 +22,8 @@ class UserCanCreateAnOrderTest < ActionDispatch::IntegrationTest
 
   test "logged out user prompted to log in before checkout" do
     user = create(:user)
-    gif = create(:gif)
-    visit gif_path(gif)
+    item = create(:item)
+    visit item_path(item)
     click_link "Add to cart"
     visit "/cart"
     within "table" do
@@ -51,11 +51,11 @@ class UserCanCreateAnOrderTest < ActionDispatch::IntegrationTest
 
   test "user can create multiple orders and view them" do
     user = create(:user)
-    gif = create(:gif)
-    gif2 = create(:gif)
+    item = create(:item)
+    item2 = create(:item)
     ApplicationController.any_instance.stubs(:current_user).returns(user)
 
-    visit gif_path(gif)
+    visit item_path(item)
     click_link "Add to cart"
 
     visit "/cart"
@@ -66,7 +66,7 @@ class UserCanCreateAnOrderTest < ActionDispatch::IntegrationTest
 
     assert page.has_content? "Please provide a payment method to continue with your purchase."
 
-    visit gif_path(gif2)
+    visit item_path(item2)
     click_link "Add to cart"
 
     visit "/cart"

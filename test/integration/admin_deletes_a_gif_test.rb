@@ -1,12 +1,12 @@
 require "test_helper"
 
-class AdminDeletesGifTest < ActionDispatch::IntegrationTest
-  test "admin deletes a gif in its show view and is redirected to back to original page" do
+class AdminDeletesitemTest < ActionDispatch::IntegrationTest
+  test "admin deletes a item in its show view and is redirected to back to original page" do
     create_and_return_admin
-    gif = create(:gif)
-    gif.tags.create(name: "faves")
-    visit gifs_path
-    click_link gif.title
+    item = create(:item)
+    item.tags.create(name: "faves")
+    visit items_path
+    click_link item.title
 
     assert page.has_content? ("Delete")
     click_on "Delete"

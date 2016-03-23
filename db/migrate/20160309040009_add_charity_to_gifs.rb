@@ -1,5 +1,5 @@
-class AddCharityToGifs < ActiveRecord::Migration
+class AddCharityToitems < ActiveRecord::Migration
   def change
-    add_reference :gifs, :charity, index: true, foreign_key: true
+    add_reference :items, :charity, index: true, foreign_key: true
   end
 end

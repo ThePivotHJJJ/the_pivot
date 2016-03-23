@@ -8,13 +8,13 @@
 }
 
 
-.gif-title {
+.item-title {
   min-height: 50px;
   margin-top: 60px;
   margin-bottom: 0;
   color: black;
 }
-a.gif-title {
+a.item-title {
   color: black;
 }
 
@@ -23,7 +23,7 @@ h1 {
   /*Shouldnt use important, but not working otherwise*/
 }
 
-.gif-show-photo {
+.item-show-photo {
   padding-top: 100px;
 }
 

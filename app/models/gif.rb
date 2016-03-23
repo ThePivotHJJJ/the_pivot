@@ -1,12 +1,12 @@
-class Gif < ActiveRecord::Base
+class item < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :image, presence: true
-  has_many :gif_tags, dependent: :destroy
-  has_many :tags, through: :gif_tags
-  has_many :order_gifs, dependent: :destroy
-  has_many :orders, through: :order_gifs
+  has_many :item_tags, dependent: :destroy
+  has_many :tags, through: :item_tags
+  has_many :order_items, dependent: :destroy
+  has_many :orders, through: :order_items
   attr_accessor :image
 
   has_attached_file :image, :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
@@ -19,10 +19,10 @@ class Gif < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  def create_tags(gif_tags)
-    gif_tags.each do |tag|
-      gifs_tag = Tag.find_or_create_by(name: "#{tag}")
-      gifs_tag.gifs << self
+  def create_tags(item_tags)
+    item_tags.each do |tag|
+      items_tag = Tag.find_or_create_by(name: "#{tag}")
+      items_tag.items << self
     end
   end
 
@@ -30,11 +30,11 @@ class Gif < ActiveRecord::Base
     !retired
   end
 
-  def self.favorite_gifs
+  def self.favorite_items
     joins(:tags).where(tags: {name: "faves"})
   end
 
   def self.all_active
-    Gif.all.each { |gif| gif.active }
+    item.all.each { |item| item.active }
   end
 end

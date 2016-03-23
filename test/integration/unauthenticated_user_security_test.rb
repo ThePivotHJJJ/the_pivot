@@ -3,10 +3,10 @@ require 'test_helper'
 class UnauthenticatedUserSecurityTest < ActionDispatch::IntegrationTest
   test "visitor cannot see other users' orders" do
     user1 = create(:user)
-    gif1 = create(:gif)
+    item1 = create(:item)
     order1 = user1.orders.create(total_price: 100)
-    order_gif1 = order1.order_gifs.create(
-      gif_id: gif1.id, quantity: 1, subtotal: 100
+    order_item1 = order1.order_items.create(
+      item_id: item1.id, quantity: 1, subtotal: 100
     )
 
     visit "/orders"
@@ -16,8 +16,8 @@ class UnauthenticatedUserSecurityTest < ActionDispatch::IntegrationTest
   end
 
   test "visitor redirected to login when trying to check out" do
-    gif = create(:gif)
-    visit gif_path(gif)
+    item = create(:item)
+    visit item_path(item)
     click_link "Add to cart"
     visit "/cart"
     click_on "Checkout"

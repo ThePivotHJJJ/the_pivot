@@ -1,25 +1,25 @@
 require "test_helper"
 
-class VisitorCanRemoveGifFromCartTest < ActionDispatch::IntegrationTest
+class VisitorCanRemoveitemFromCartTest < ActionDispatch::IntegrationTest
   test "visitor no longer sees removed item in cart" do
-    gif = create(:gif)
-    gif2 = create(:gif)
-    visit gif_path(gif)
+    item = create(:item)
+    item2 = create(:item)
+    visit item_path(item)
     click_link "Add to cart"
-    visit gif_path(gif2)
+    visit item_path(item2)
     click_link "Add to cart"
 
     click_link "cart(2)"
 
-    within first("#gif-info", minimum: 1) do
+    within first("#item-info", minimum: 1) do
       click_link("Remove")
     end
 
     assert_equal "/cart", current_path
-    assert page.has_content?(gif2.title)
-    refute page.has_content?(gif.description)
+    assert page.has_content?(item2.title)
+    refute page.has_content?(item.description)
 
-    assert page.has_content?("Successfully removed license for #{gif.title}")
-    assert page.has_link?(gif.title)
+    assert page.has_content?("Successfully removed license for #{item.title}")
+    assert page.has_link?(item.title)
   end
 end
