@@ -2,10 +2,11 @@ require "rails_helper"
 
 feature "user can view dashboard" do
   scenario "they are directed to their dashboard after loggin in" do
-    create_and_login_user
+    user = FactoryGirl.create(:user)
+    login(user)
 
     expect(current_path).to eq("/dashboard")
-    expect(page).to have_content("Welcome, Brock")
+    expect(page).to have_content("Welcome, #{user.username}")
     expect(page).to have_content("Recently Bought")
     expect(page).to have_content("Recently Sold")
     expect(page).to have_content("Recently Viewed")

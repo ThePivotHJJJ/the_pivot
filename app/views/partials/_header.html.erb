@@ -1,36 +1,26 @@
-<div class="jumbotron hero">
-  <div class="container">
-    <div class="col-md-7">
-      <h1 class="brand">Put a Bid On It</h1>
+<header>
+  <div class="navbar navbar-default navbar-fat navbar-clean">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar b1"></span>
+          <span class="icon-bar b2"></span>
+          <span class="icon-bar b3"></span>
+        </button>
+        <%= link_to "PABOI", root_path, class: "navbar-brand" %>
+        <small>( Put A Bid On It! )</small>
+      </div>
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Items", items_path %></li>
+          <li><%= link_to "Shops", shops_path %></li>
+          <li><%= link_to "Sell on PABOI", "#" %></li>
+          <li><%= link_to "Register", new_user_path %></li>
+          <li><%= link_to "Sign In", login_path %></li>
+          <li><%= link_to "Cart", "#" %></li>
+        </ul>
+      </div>
     </div>
-    <div class=" col-md-offset-3 col-md-8">
-      <h3 class="brand">tagline here</h3>
-    </div>
   </div>
-</div>
-<nav class="navbar navbar-inverse col-md-12">
-  <div class="container">
-    <ul class="nav navbar-nav navbar-right gif-links">
-      <li><%= link_to "All Shops", shops_path %></li>
-      <li><%= link_to "All Items", items_path, class: "glyphicon" %></li>
-      <li><%= link_to "All Tags", tags_path, class: "glyphicon" %></li>
-      <% if @cart.has_gifs? %>
-        <li><%= link_to " cart(#{@cart.total_items})", cart_path, class: "glyphicon glyphicon-shopping-cart" %></li>
-      <% end %>
-      <% if current_user %>
-        <li><%= link_to "#{current_user.username}'s_dashboard", dashboard_path, class: "glyphicon" %></li>
-        <li><%= link_to "logout", logout_path, method: :delete, class: "glyphicon" %></li>
-      <% else %>
-        <li><%= link_to "login", login_path, class: "glyphicon" %></li>
-        <li><%= link_to "sign_up", new_user_path, class: "glyphicon" %></li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-<div class="container-fluid">
-  <div class ="col-md-12">
-    <% flash.each do |type, message| %>
-      <%= content_tag :div, sanitize(message), class: "alert alert-#{type}" %>
-    <% end %>
-  </div>
-</div>
+</header>
