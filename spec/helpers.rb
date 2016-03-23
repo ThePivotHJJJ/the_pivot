@@ -1,14 +1,9 @@
 module Helpers
-  def create_and_login_user
-    user = User.create(username: "Brock", password: "password")
-
+  def login(user)
     visit '/'
-
-    click_on "login"
-
-    fill_in "Username", with: "Brock"
+    click_on "Sign In"
+    fill_in "Username", with: user.username
     fill_in "Password", with: "password"
-
     within ".login" do
       click_on "Login"
     end
