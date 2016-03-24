@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :shops, only: [:index]
-
   resources :cart_items, only: [:create]
   get "/cart", to: "cart_items#show"
   delete "/cart", to: "cart_items#destroy"
@@ -31,4 +29,10 @@ Rails.application.routes.draw do
   get "/tag/:name", :to => "tags#show", as: :tag
 
   resources :charges
+
+  resources :shops, only: [:index]
+  get "/:shop", to: "shops#show", as: :shop
+  namespace :shop, path: ":shop", as: :shop do
+    resources :items, only: [:index, :show]
+  end
 end

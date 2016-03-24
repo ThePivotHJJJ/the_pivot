@@ -4,7 +4,7 @@
       <h1>All Shops</h1>
       <% @shops.each do |shop| %>
         <div id="shop">
-          <%= link_to shop.name, shops_path(shop) %>
+          <%= link_to shop.name, shop_path(shop: shop.slug) %>
         </div>
       <% end %>
     </div>
