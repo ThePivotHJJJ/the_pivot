@@ -7,6 +7,7 @@ class Item < ActiveRecord::Base
   has_many :tags, through: :item_tags
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
+  belongs_to :shop
   attr_accessor :image
 
   has_attached_file :image, :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
