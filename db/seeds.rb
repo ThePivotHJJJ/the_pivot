@@ -1,70 +1,53 @@
-# class Seed
-#   def start
-#     create_tags
-#     create_items
-#     create_users
-#     create_orders
-#     create_order_items
-#   end
+class Seed
+  def self.start
+    seed = Seed.new
+    seed.generate_users
+    seed.generate_tags
+    seed.generate_items
+    # seed.generate_orders
+    seed.generate_shops
+  end
 
-#   def create_tags
-#     10.times { Tag.create!(name: Faker::Hipster.word)}
-#   end
+  def generate_users
+    50.times do |i|
+      user = User.create!(
+        username: Faker::Name.name,
+        password: "password"
+      )
+      puts "User #{i}: #{user.username} created!"
+    end
+  end
 
-#   def create_items
-#     10.times do
-#       Item.create!(title: Faker::Lorem.sentence,
-#         description: Faker::Hipster.word,
-#         price: Random.rand(1..1000),
-#         image: Faker::Avatar.image
-#         tags: Tag.all.sample)
-#   end
+  def generate_tags
+    10.times do |i|
+      tag = Tag.create!(
+        name: Faker::Commerce.department
+      )
+      puts "Tag #{i}: #{tag.name} created!"
+    end
+  end
 
-#   def create_users
-#     50.times do
-#       User.create!(username: Faker::Internet.user_name,
-#         password: Faker::Internet.password)
-#     end
-#   end
+  def generate_items
+    image = File.open(Dir.glob(File.join(Rails.root, "sample_images", "*")).sample)
+    50.times do |i|
+      item = Item.create!(
+        title: Faker::Commerce.product_name,
+        description: Faker::Lorem.paragraph,
+        price: Faker::Commerce.price,
+        image: image)
+      item.tags << Tag.limit(5).order("RANDOM()")
+      puts "Item #{i}: #{item.title} created!"
+    end
+  end
 
-#   def create_orders
+  def generate_shops
+    50.times do |i|
+      shop = Shop.create!(
+        name: Faker::Company.name
+      )
+      puts "Shop #{i}: #{shop.name} created!"
+    end
+  end
+end
 
-#   end
-
-#   def create_order_items
-
-#   end
-# end
-
-# Seed.new.start
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-# 10.times do
-#   Tag.create(name: Faker::Hipster.word)
-# end
-# #
-# 71.times do
-#   item = Item.create(title: Faker::Lorem.sentence,
-#               description: " adfg",
-#               price: 100,
-#               image: "https://placeholdit.imgix.net/~text?txtsize=60&bg=000000&txt=640%C3%97480&w=640&h=480&fm=png"
-#               )
-#   item.tags << Tag.all.shuffle.first
-# end
-#
-#
-# 20.times do
-#   subtotal = Random.new.rand(1..10)
-#   user = User.create(username: "string", password: "password")
-#   item = Item.all.shuffle.first
-#   order = user.orders.create!(total_price: 3*subtotal)
-#   order.order_items.create!(
-#     item_id: item.id, quantity: 1, subtotal: subtotal
-#   )
-#   item = Item.all.shuffle.first
-#   order.order_items.create!(
-#     item_id: item.id, quantity: 2, subtotal: subtotal*2
-#   )
-# end
+Seed.start
