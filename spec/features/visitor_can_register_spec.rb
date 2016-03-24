@@ -4,7 +4,10 @@ feature "Visitor can register" do
   scenario "they are directed to their dashboard" do
     visit "/"
 
-    click_on "Register"
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
     fill_in "Username",  with: "Brock"
     fill_in "Password",  with: "password"
     click_on "Create Account"
@@ -17,7 +20,10 @@ feature "Visitor can register" do
     scenario "they see an error message" do
       visit "/"
 
-      click_on "Register"
+      within('.navbar-collapse') do
+        click_on "Register"
+      end
+
       fill_in "Username",  with: "Brock"
       fill_in "Password",  with: ""
       click_on "Create Account"

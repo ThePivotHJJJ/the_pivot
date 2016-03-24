@@ -8,13 +8,17 @@ feature "Visitor can view all shops" do
     click_on "Shops"
 
     expect(current_path).to eq(shops_path)
+
     expect(page).to have_content("All Shops")
+
     within('div#shop-list') do
       expect(page).to have_css("#shop", count: 8)
     end
+
     Shop.all.each do | shop |
       expect(page).to have_content(shop.name)
       expect(page).to have_link(shop.name)
     end
+
   end
 end

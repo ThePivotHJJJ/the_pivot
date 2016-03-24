@@ -8,12 +8,9 @@ feature "visitor can view all items" do
     click_link "Items"
 
     expect(current_path).to eq(items_path)
-    within('div#item-list') do
-      expect(page).to have_css("#item", count: 14)
-    end
+
     Item.all.each do |item|
-      expect(page).to have_content(item.name)
-      expect(page).to have_link(item.name)
+      expect(page).to have_link(item.title)
     end
   end
 end
