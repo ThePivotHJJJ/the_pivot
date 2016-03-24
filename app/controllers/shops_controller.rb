@@ -4,8 +4,6 @@ class ShopsController < ApplicationController
   end
 
   def show
-    # @shop = Shop.find(params[:id])
-    binding.pry
     shop = Shop.find_by(slug: params[:shop])
     @items = shop.items
   end

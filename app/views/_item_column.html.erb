@@ -1,6 +1,6 @@
 <% if item.active %>
   <div class="col-xs-9 col-sm-6 col-md-4 col-lg-3 item">
-  <p class="item-title"><%= link_to "#{item.title}", shop_item_path(item.id), class: "item-title" %></p>
+  <p class="item-title"><%= link_to "#{item.title}", shop_item_path(item.shop.slug, item.id), class: "item-title" %></p>
   <%= link_to image_tag(item.image, class: "items", width: "250", height: "200"), shop_item_path(item.id) %>
   </div>
 <% end %>
