@@ -1,6 +1,5 @@
 class Shop < ActiveRecord::Base
-  has_many :shop_items
-  has_many :items, through: :shop_items
+  has_many :items
   before_validation :generate_slug
 
 private

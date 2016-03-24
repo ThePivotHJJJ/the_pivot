@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :update, :show]
     resources :items, only: [:new, :create, :edit, :update, :destroy]
   end
-  
+
   resources :cart_items, only: [:create]
   get "/cart", to: "cart_items#show"
   delete "/cart", to: "cart_items#destroy"
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :shops, only: [:index]
   get "/:shop", to: "shops#show", as: :shop
-  namespace :shops, path: ":shop", as: :shop do
+  namespace :shop, path: ":shop", as: :shop do
     resources :items, only: [:index, :show]
   end
 end
