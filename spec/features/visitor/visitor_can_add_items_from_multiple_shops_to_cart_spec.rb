@@ -12,7 +12,7 @@ feature "Visitor can add items from multiple shops to their cart" do
     visit shops_path
 
     click_on "Gifs for Good"
-    expect(current_path).to eq shop_path(shop1)
+    expect(current_path).to eq shop_path(shop: shop1.slug)
 
     click_on item1.title
     click_on "Add to cart"
