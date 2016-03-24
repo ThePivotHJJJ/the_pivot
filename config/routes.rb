@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :shops, only: [:index]
+  resources :shops, only: [:index, :show]
+
+  namespace :shop do
+    resources :items, only: [:show]
+  end
 
   resources :cart_items, only: [:create]
   get "/cart", to: "cart_items#show"
