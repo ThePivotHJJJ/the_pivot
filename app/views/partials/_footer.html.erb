@@ -5,7 +5,10 @@
         <div class="inner">
           <h5>Join the community</h5>
           <ul>
-            <li><%= link_to "Register", new_user_path %></li>
+            <% if current_user %>
+            <% else %>
+              <li><%= link_to "Register", new_user_path %></li>
+            <% end %>
             <li><%= link_to "Sell on PABOI", "#" %></li>
           </ul>
         </div>
