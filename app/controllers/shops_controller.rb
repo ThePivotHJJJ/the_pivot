@@ -20,6 +20,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     if @shop.save
       current_user.roles.create(name: "business_admin")
+      current_user.update(shop_id: @shop.id)
       redirect_to admin_dashboard_path
     else
       flash.now[:error] = "Invalid Entry, Try again."

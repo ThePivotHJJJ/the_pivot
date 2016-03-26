@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326211922) do
+ActiveRecord::Schema.define(version: 20160326215906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,7 +105,10 @@ ActiveRecord::Schema.define(version: 20160326211922) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "shop_id"
   end
+
+  add_index "users", ["shop_id"], name: "index_users_on_shop_id", using: :btree
 
   add_foreign_key "bids", "items"
   add_foreign_key "bids", "users"
@@ -115,4 +118,5 @@ ActiveRecord::Schema.define(version: 20160326211922) do
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "users", "shops"
 end
