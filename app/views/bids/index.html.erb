@@ -1,0 +1,26 @@
+<div class="table-responsive container">
+  <h1>Active Bids</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>My Bid</th>
+        <th>Current Bid</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bids.each do |bid| %>
+        <tr>
+          <td>
+            <%= link_to bid.item.title, shop_item_path(shop: bid.item.shop, id: bid.item)%>
+          </td>
+          <td><%= bid.item.description %></td>
+          <td><%= format_price(bid.bid_price) %></td>
+          <td><%= format_price(bid.item.max_bid) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
