@@ -2,7 +2,7 @@ class Shop < ActiveRecord::Base
   has_many :items
   before_validation :generate_slug
 
-private
+  private
 
   def generate_slug
     self.slug = name.parameterize

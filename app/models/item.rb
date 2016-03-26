@@ -3,10 +3,12 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :image, presence: true
+
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
+  has_many :bids
   belongs_to :shop
   attr_accessor :image
 
@@ -20,6 +22,14 @@ class Item < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def self.favorite_items
+    joins(:tags).where(tags: {name: "faves"})
+  end
+
+  def self.all_active
+    Item.all.each { |item| item.active }
+  end
+
   def create_tags(item_tags)
     item_tags.each do |tag|
       items_tag = Tag.find_or_create_by(name: "#{tag}")
@@ -31,11 +41,7 @@ class Item < ActiveRecord::Base
     !retired
   end
 
-  def self.favorite_items
-    joins(:tags).where(tags: {name: "faves"})
-  end
-
-  def self.all_active
-    Item.all.each { |item| item.active }
+  def max_bid
+    bids.maximum(:bid_price)
   end
 end
