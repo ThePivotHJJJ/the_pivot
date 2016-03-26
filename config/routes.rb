@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   namespace :shop, path: ":shop", as: :shop do
     resources :items, only: [:index, :show]
   end
+
+  resources :bids, only: [:create]
 end
