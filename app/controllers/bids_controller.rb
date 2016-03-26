@@ -1,4 +1,8 @@
 class BidsController < ApplicationController
+  def index
+    @bids = current_user.bids
+  end
+
   def create
     item = Item.find(params[:item])
     bid = Bid.new(user_id: current_user.id, item_id: item.id)
