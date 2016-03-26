@@ -28,6 +28,20 @@ class ShopsController < ApplicationController
     end
   end
 
+  def edit
+    @shop = current_user.shop
+  end
+
+  def update
+    @shop = current_user.shop
+    if @shop.update(shop_params)
+      redirect_to admin_dashboard_path
+    else
+      flash.now[:error] = "Invalid input"
+      render :edit
+    end
+  end
+
 private
 
   def shop_params
