@@ -5,11 +5,17 @@ feature "user can become business admin" do
     user = User.create(username: "Brock", password: "password")
     login(user)
 
+    visit root_path
 
+    within('.navbar-collapse') do
+      click_on "Sell on PABOI"
+    end
+
+    fill_in "Name", with: "Double J's Yummy Snack Party"
+    click_on "Create shop"
+
+    expect(current_path).to eq admin_dashboard_path
+    expect(page).to have_content "Manage My Shop"
+    expect(page).to have_content "Double J's Yummy Snack Party"
   end
 end
-
-#must log in to create shop
-#Sell on paboi leads to create for a shop
-#Submitting create creates the shop and changes current user's role to business admin
-#Redirected to Manage My Shop Page

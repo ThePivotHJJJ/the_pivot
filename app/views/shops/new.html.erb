@@ -1,0 +1,6 @@
+<h1>Create Your Shop</h1>
+<h4><%= form_for @shop do |f| %></h4>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <h4><%= f.submit "Create shop", class: "btn btn-primary" %></h4>
+<% end %>
