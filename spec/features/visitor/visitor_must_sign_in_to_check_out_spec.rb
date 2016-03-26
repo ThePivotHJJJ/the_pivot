@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "visitor must sign in to check out" do
-  scenario "they are directed to login page when trying to check out" do
+  scenario "they see the login page" do
     shop1 = Shop.create(name: "Gifs for Good")
     item1 = create(:item)
     shop1.items << item1
