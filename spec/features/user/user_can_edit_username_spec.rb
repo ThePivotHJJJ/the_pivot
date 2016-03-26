@@ -10,7 +10,6 @@ feature "user can edit their username" do
     click_on "Edit My Profile"
 
     fill_in "Username", with: "Misty"
-    fill_in "Password", with: "password"
     click_on "Save"
 
     expect(current_path).to eq dashboard_path
