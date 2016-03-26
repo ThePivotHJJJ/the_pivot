@@ -30,8 +30,9 @@ Rails.application.routes.draw do
 
   resources :charges
 
-  resources :shops, only: [:index, :new, :create]
+  resources :shops, only: [:index, :new, :create, :edit]
   get "/:shop", to: "shops#show", as: :shop
+  patch "/shops/:id", to: "shops#update", as: :update_shop
   namespace :shop, path: ":shop", as: :shop do
     resources :items, only: [:index, :show]
   end
