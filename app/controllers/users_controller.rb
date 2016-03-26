@@ -22,6 +22,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    binding.pry
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to dashboard_path
+    else
+      flash.now[:error] = "Invalid input"
+      render :edit
+    end
+  end
+
 private
 
   def user_params
