@@ -13,7 +13,7 @@
           <% end %>
         </p>
         <br>
-        <% if current_admin? %>
+        <% if current_user && current_user.business_admin? %>
           <p><%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn btn-default" %>
           <p><%= link_to "Delete", admin_item_path(@item.id), method: :delete, class: "btn btn-default" %>
         <% end %>

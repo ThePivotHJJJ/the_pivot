@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      @user.roles.create(name: "registered user")
       redirect_to dashboard_path
     else
       flash.now[:error] = "Invalid Input"
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_admin?
+    if current_user.business_admin?
       redirect_to admin_dashboard_path
     else
       current_user
