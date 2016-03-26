@@ -37,4 +37,5 @@ Rails.application.routes.draw do
   end
 
   resources :bids, only: [:create]
+  get "/dashboard/bids", to: "bids#index", as: :user_bids
 end
