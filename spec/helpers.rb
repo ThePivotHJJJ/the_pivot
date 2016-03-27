@@ -28,6 +28,14 @@ module Helpers
     click_on "Create shop"
   end
 
+  def create_item_for_shop
+    admin = User.first
+    shop = Shop.first
+    item = FactoryGirl.create(:item, bid: true)
+    shop.items << item
+    logout(admin)
+  end
+
   def create_shop_item
     visit admin_dashboard_path
     click_on "Add new item"
@@ -56,7 +64,7 @@ module Helpers
       item = create(:item)
       shop = create(:shop)
       item.update(shop_id: shop.id)
-      
+
       order.order_items.create(
         item_id: item.id, quantity: 2, subtotal: 100
       )
