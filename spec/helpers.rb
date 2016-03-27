@@ -70,15 +70,18 @@ module Helpers
     Role.create(name: "platform_admin")
   end
 
-  def register_user
+  def create_registered_user
     visit "/"
 
     within('.navbar-collapse') do
       click_on "Register"
     end
 
-    fill_in "Username",  with: "Brock"
+    fill_in "Username",  with: "Misty"
     fill_in "Password",  with: "password"
     click_on "Create Account"
+
+    visit "/"
+    click_on "Sign Out"
   end
 end

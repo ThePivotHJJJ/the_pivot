@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Business admin can manage other business admins" do
   scenario "the new admin is listed as shop admin" do
+    create_roles
     create_registered_user
     create_business_admin_and_shop
     user = User.first
@@ -19,6 +20,7 @@ feature "Business admin can manage other business admins" do
   end
 
   scenario "the removed admin is listed as non-admin user" do
+    create_roles
     create_registered_user
     create_business_admin_and_shop
     user = User.first
