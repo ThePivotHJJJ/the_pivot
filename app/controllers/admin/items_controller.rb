@@ -46,7 +46,7 @@ class Admin::ItemsController < Admin::BaseController
 private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :tag, :image, :retired)
+    params.require(:item).permit(:title, :description, :price, :tag, :image, :retired, :bid)
   end
 
   def redirect_to_back(default = root_url)

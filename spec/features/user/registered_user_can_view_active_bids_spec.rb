@@ -5,7 +5,7 @@ feature "Registered user can view active bids" do
     user = FactoryGirl.create(:user)
     login(user)
     shop = Shop.create(name: "Gifs for Good")
-    item = FactoryGirl.create(:item)
+    item = FactoryGirl.create(:item, bid: true)
     shop.items << item
 
     visit shops_path
