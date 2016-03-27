@@ -9,12 +9,13 @@ module Helpers
     end
   end
 
-  def logout(user)
+  def logout
     visit "/"
     click_on "Sign Out"
   end
 
   def create_business_admin_and_shop
+    create_roles
     user = User.create(username: "Brock", password: "password")
     login(user)
 
@@ -26,6 +27,22 @@ module Helpers
 
     fill_in "Name", with: "Double J's Yummy Snack Party"
     click_on "Create shop"
+  end
+
+  def create_item_for_shop
+    admin = User.first
+    shop = Shop.first
+    item = FactoryGirl.create(:item, bid: true)
+    shop.items << item
+    logout
+  end
+
+  def close_bid(admin, shop, item)
+    logout
+    login(admin)
+    visit shop_item_path(shop: shop.slug, id: item.id)
+    click_link "Close bidding"
+    logout
   end
 
   def create_shop_item
@@ -56,10 +73,31 @@ module Helpers
       item = create(:item)
       shop = create(:shop)
       item.update(shop_id: shop.id)
-      
+
       order.order_items.create(
         item_id: item.id, quantity: 2, subtotal: 100
       )
     end
+  end
+
+  def create_roles
+    Role.create(name: "registered_user")
+    Role.create(name: "business_admin")
+    Role.create(name: "platform_admin")
+  end
+
+  def create_registered_user
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Misty"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    visit "/"
+    click_on "Sign Out"
   end
 end

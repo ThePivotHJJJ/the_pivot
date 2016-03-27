@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      @user.roles.create(name: "registered user")
+      @user.roles << Role.find_by(name: "registered_user")
       redirect_to dashboard_path
     else
       flash.now[:error] = "Invalid Input"

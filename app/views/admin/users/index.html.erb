@@ -1,0 +1,13 @@
+<div class="shop-admins">
+  <h1>Current Shop Admins</h1>
+  <% @shop_admins.each do |user| %>
+    <%= link_to "Remove #{user.username} as shop admin", admin_user_path(user), method: :put %>
+  <% end %>
+</div>
+
+<div class="non-admin-users">
+  <h1>Other Users</h1>
+  <% @non_admin_users.each do |user| %>
+    <%= link_to "Make #{user.username} shop admin", admin_user_path(user), method: :put %>
+  <% end %>
+</div>

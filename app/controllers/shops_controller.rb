@@ -19,7 +19,7 @@ class ShopsController < ApplicationController
   def create
     @shop = Shop.new(shop_params)
     if @shop.save
-      current_user.roles.create(name: "business_admin")
+      current_user.roles << Role.find_by(name: "business_admin")
       current_user.update(shop_id: @shop.id)
       redirect_to admin_dashboard_path
     else

@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Visitor can register" do
   scenario "they are directed to their dashboard" do
+    create_roles
     visit "/"
 
     within('.navbar-collapse') do
