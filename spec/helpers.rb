@@ -15,6 +15,7 @@ module Helpers
   end
 
   def create_business_admin_and_shop
+    create_roles
     user = User.create(username: "Brock", password: "password")
     login(user)
 
@@ -77,5 +78,26 @@ module Helpers
         item_id: item.id, quantity: 2, subtotal: 100
       )
     end
+  end
+
+  def create_roles
+    Role.create(name: "registered_user")
+    Role.create(name: "business_admin")
+    Role.create(name: "platform_admin")
+  end
+
+  def create_registered_user
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Misty"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    visit "/"
+    click_on "Sign Out"
   end
 end
