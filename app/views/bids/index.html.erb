@@ -7,6 +7,7 @@
         <th>Description</th>
         <th>My Bid</th>
         <th>Current Bid</th>
+        <th>Status</th>
       </tr>
     </thead>
 
@@ -19,6 +20,7 @@
           <td><%= bid.item.description %></td>
           <td><%= format_price(bid.bid_price) %></td>
           <td><%= format_price(bid.item.max_bid) %></td>
+          <td><%= item_status(bid, current_user) %></td>
         </tr>
       <% end %>
     </tbody>

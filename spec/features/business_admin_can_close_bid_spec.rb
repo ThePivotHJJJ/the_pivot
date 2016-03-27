@@ -7,7 +7,7 @@ feature "Business admin can close bid" do
     shop = Shop.first
     item = FactoryGirl.create(:item, bid: true)
     shop.items << item
-    logout(admin)
+    logout
 
     user = FactoryGirl.create(:user)
     login(user)
@@ -17,7 +17,7 @@ feature "Business admin can close bid" do
     click_link item.title
     click_button "Bid"
 
-    logout(user)
+    logout
     login(admin)
 
     visit shop_item_path(shop: shop.slug, id: item.id)
