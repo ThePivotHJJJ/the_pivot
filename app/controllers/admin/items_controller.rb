@@ -5,11 +5,13 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
+    @shop = current_user.shop
     if @item.save
       tags = params[:tags].split(", ")
       @item.create_tags(tags)
+      @shop.items << @item
       flash[:success] = "item has been successfully added"
-      redirect_to item_path(@item)
+      redirect_to shop_item_path(shop: @item.shop.slug, id: @item.id)
     else
       flash.now[:error] = "Invalid Entry, Try again."
       render new_admin_item_path

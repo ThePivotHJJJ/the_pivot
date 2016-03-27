@@ -7,19 +7,6 @@ class ItemsController < ApplicationController
     @item = find_item
   end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      tags = params[:tags].split(",")
-      @item.create_tags(tags)
-      flash[:success] = "item has been successfully added"
-      redirect_to item_path(@item)
-    else
-      flash.now[:error] = "Invalid Entry, Try again."
-      render new_admin_item_path
-    end
-  end
-
   def update
     @item = find_item
     @item.update_attributes(retired: true)
