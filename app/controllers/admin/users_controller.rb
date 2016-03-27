@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::BaseController
       redirect_to admin_users_path
     else
       @user.update(shop_id: current_user.shop_id)
-      @user.roles.create(name: "business_admin")
+      @user.roles << Role.find_by(name: "business_admin")
       redirect_to admin_users_path
     end
   end
