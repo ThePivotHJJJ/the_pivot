@@ -35,4 +35,20 @@ module Helpers
 
     click_on "add new item!"
   end
+
+  def create_multiple_orders(num)
+    num.times do
+      user = create(:user)
+      item = create(:item)
+      OrderItem.create(
+        item_id: item.id, quantity: 1, subtotal: 100
+      )
+      order = user.orders.create!(total_price: 100, status: 0)
+
+      item = create(:item)
+      order.order_items.create(
+        item_id: item.id, quantity: 2, subtotal: 100
+      )
+    end
+  end
 end
