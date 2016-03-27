@@ -44,4 +44,8 @@ class Item < ActiveRecord::Base
   def max_bid
     bids.maximum(:bid_price)
   end
+
+  def max_bid_user
+    bids.where(bid_price: max_bid).first.user
+  end
 end

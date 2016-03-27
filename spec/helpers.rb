@@ -9,7 +9,7 @@ module Helpers
     end
   end
 
-  def logout(user)
+  def logout
     visit "/"
     click_on "Sign Out"
   end
@@ -33,7 +33,15 @@ module Helpers
     shop = Shop.first
     item = FactoryGirl.create(:item, bid: true)
     shop.items << item
-    logout(admin)
+    logout
+  end
+
+  def close_bid(admin, shop, item)
+    logout
+    login(admin)
+    visit shop_item_path(shop: shop.slug, id: item.id)
+    click_link "Close bidding"
+    logout
   end
 
   def create_shop_item
