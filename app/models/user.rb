@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :order_items, through: :orders
   has_many :bids
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
   belongs_to :shop
 
