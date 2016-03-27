@@ -6,7 +6,8 @@
         <h3><%= format_price(@item.price) %></h3>
         <p>
           <% if @item.retired? %>
-            <%= "Sorry, this item is no longer available" %>
+            <h3>This item is closed</h3>
+            <h3>Item won for <%= format_price(@item.max_bid) %></h3>
           <% else %>
             <% if @item.bid? %>
               <%= button_to "Bid", bids_path(item: @item.id) %>
@@ -19,6 +20,9 @@
         <% if current_user && current_user.business_admin? %>
           <p><%= link_to "Edit", edit_admin_item_path(@item.id), class: "btn btn-default" %>
           <p><%= link_to "Delete", admin_item_path(@item.id), method: :delete, class: "btn btn-default" %>
+          <% if @item.bid? && !@item.retired? %>
+            <p><%= link_to "Close bidding", bid_path(@item), method: :delete, class: "btn btn-default" %></p>
+          <% end %>
         <% end %>
       </div>
       <div class="col-md-12 text-center">
