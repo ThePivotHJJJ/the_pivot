@@ -40,12 +40,18 @@ module Helpers
     num.times do
       user = create(:user)
       item = create(:item)
+      shop = create(:shop)
+      item.update(shop_id: shop.id)
+
       OrderItem.create(
         item_id: item.id, quantity: 1, subtotal: 100
       )
       order = user.orders.create!(total_price: 100, status: 0)
 
       item = create(:item)
+      shop = create(:shop)
+      item.update(shop_id: shop.id)
+      
       order.order_items.create(
         item_id: item.id, quantity: 2, subtotal: 100
       )

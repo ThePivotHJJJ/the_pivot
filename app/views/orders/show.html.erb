@@ -31,7 +31,7 @@
     <div class="row product">
       <div class="col-md-5 col-md-offset-0"><p><%= image_tag order_item.item.image, width: 200 %></p>
       </div>
-      <h4><%= link_to order_item.item.title, item_path(order_item.item) %></h4>
+      <h4><%= link_to order_item.item.title, shop_item_path(shop: order_item.item.shop.slug, id: order_item.item.id) %></h4>
       <h4>Quantity: <%= order_item.quantity %></h4>
     </div>
   </div>
