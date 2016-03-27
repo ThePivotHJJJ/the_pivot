@@ -29,7 +29,7 @@ class Admin::ItemsController < Admin::BaseController
         tags = params[:tags].split(", ")
         @item.create_tags(tags)
       end
-      redirect_to item_path(@item.id)
+      redirect_to shop_item_path(shop: @item.shop.slug, id: @item.id)
     else
       flash.now[:error] = "Invalid input"
       render :edit
