@@ -51,10 +51,14 @@ module Helpers
       item = create(:item)
       shop = create(:shop)
       item.update(shop_id: shop.id)
-      
+
       order.order_items.create(
         item_id: item.id, quantity: 2, subtotal: 100
       )
     end
+  end
+
+  def create_roles
+    #
   end
 end
