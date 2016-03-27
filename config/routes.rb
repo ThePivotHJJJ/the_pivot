@@ -37,6 +37,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
   end
 
-  resources :bids, only: [:create]
+  resources :bids, only: [:create, :destroy]
   get "/dashboard/bids", to: "bids#index", as: :user_bids
 end

@@ -15,7 +15,7 @@ feature "Business admin can close bid" do
     visit shops_path
     click_link shop.name
     click_link item.title
-    click_link "Bid"
+    click_button "Bid"
 
     logout(user)
     login(admin)
@@ -30,8 +30,7 @@ feature "Business admin can close bid" do
     expect(page).to have_content("Item #{item.title} has been closed for bidding")
     expect(page).to_not have_link("Bid")
     expect(page).to have_content("This item is closed")
-    expect(page).to have_content("Item won for #{item.price}")
-
-    # ...continue with the mechanics for closing out a bid
+    expect(page).to have_content("Item won for $1.00")
+    expect(page).to_not have_link("Close bidding")
   end
 end

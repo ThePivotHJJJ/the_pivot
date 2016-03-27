@@ -17,4 +17,11 @@ class BidsController < ApplicationController
     flash[:success] = "Placed a bid for #{format_price(item.max_bid)} on #{item.title}"
     redirect_to shop_item_path(shop: item.shop.slug, id: item.id)
   end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.update(retired: true)
+    flash[:success] = "Item #{item.title} has been closed for bidding"
+    redirect_to shop_item_path(shop: item.shop.slug, id: item.id)
+  end
 end

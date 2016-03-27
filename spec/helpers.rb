@@ -9,6 +9,11 @@ module Helpers
     end
   end
 
+  def logout(user)
+    visit "/"
+    click_on "Sign Out"
+  end
+
   def create_business_admin_and_shop
     user = User.create(username: "Brock", password: "password")
     login(user)
