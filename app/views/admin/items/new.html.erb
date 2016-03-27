@@ -12,6 +12,7 @@
   <%= text_field_tag :tags %></h4>
   <h4><%= f.label :image %></h4>
   <%= f.file_field :image %></h4>
+  <%= f.select(:bid, options_for_select([["Buy it now", false], ["Bid", true]])) %>
   <h4><%= f.submit "add new item!", class: "btn btn-primary" %></h4>
 <% end %>
 </div>

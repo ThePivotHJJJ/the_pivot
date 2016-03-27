@@ -14,7 +14,7 @@ feature "user can checkout" do
     expect(current_path).to eq shop_path(shop: shop1.slug)
 
     click_on item1.title
-    click_on "Add to cart"
+    click_on "Buy it now"
 
     visit cart_path
 
