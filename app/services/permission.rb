@@ -2,6 +2,7 @@ class Permission
   extend Forwardable
 
   def_delegators :user,
+                 :platform_admin?,
                  :business_admin?,
                  :registered_user?
 
@@ -14,6 +15,8 @@ class Permission
     @action     = action
 
     case
+    when platform_admin?
+      platform_admin_permissions
     when business_admin?
       business_admin_permissions
     when registered_user?
@@ -26,6 +29,11 @@ class Permission
 private
   def user
     @user
+  end
+
+  def platform_admin_permissions
+    return true if @controller == "admin/shops" && @action.in?(%w(index))
+    business_admin_permissions
   end
 
   def business_admin_permissions

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'shops/index'
+  end
+
   root to: "static_pages#landing"
 
   get "/login", to: "sessions#new"
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :update]
     resources :orders, only: [:index, :update, :show]
     resources :items, only: [:new, :create, :edit, :update, :destroy]
+    resources :shops, only: [:index]
   end
 
   resources :cart_items, only: [:create]

@@ -29,11 +29,19 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    @shop = current_user.shop
+    if current_user.platform_admin?
+      @shop = Shop.find(params[:id])
+    else
+      @shop = current_user.shop
+    end
   end
 
   def update
-    @shop = current_user.shop
+    if current_user.platform_admin?
+      @shop = Shop.find(params[:id])
+    else
+      @shop = current_user.shop
+    end
     if @shop.update(shop_params)
       redirect_to admin_dashboard_path
     else

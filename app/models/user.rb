@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :roles, through: :user_roles
   belongs_to :shop
 
+  def platform_admin?
+    roles.exists?(name: "platform_admin")
+  end
+
   def business_admin?
     roles.exists?(name: "business_admin")
   end
