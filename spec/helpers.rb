@@ -80,6 +80,18 @@ module Helpers
     end
   end
 
+  def user_wins_bid(admin, shop, item)
+    visit root_path
+    click_link "Shops"
+    click_link shop.name
+    click_link item.title
+    click_button "Bid"
+    close_bid(admin, shop, item)
+    login(user)
+    click_link "My Profile"
+    click_link "Active Bids"
+  end
+
   def create_roles
     Role.create(name: "registered_user")
     Role.create(name: "business_admin")
