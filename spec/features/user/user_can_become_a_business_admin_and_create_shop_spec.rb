@@ -3,7 +3,8 @@ require "rails_helper"
 feature "user can become business admin" do
   scenario "they see the manage my shop dashboard" do
     create_roles
-    user = User.create(username: "Brock", password: "password")
+    create_registered_user
+    user = User.find_by(username: "Misty")
     login(user)
 
     visit root_path

@@ -1,12 +1,16 @@
 require "rails_helper"
 
 feature "user can checkout" do
-  scenario "they see the login page" do
-    user = create(:user)
-    login(user)
+  scenario "they see the checkout page" do
+    create_roles
+    create_registered_user
+
     shop1 = Shop.create(name: "Gifs for Good")
     item1 = create(:item)
     shop1.items << item1
+
+    user = User.find_by(username: "Misty")
+    login(user)
 
     visit shops_path
 
