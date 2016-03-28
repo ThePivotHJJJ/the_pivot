@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   def authorized?
     current_permission.allow?(params[:controller], params[:action])
   end
-  
+
   def find_item
     Item.find(params[:id])
   end

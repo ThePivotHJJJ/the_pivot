@@ -16,6 +16,7 @@ feature "Registered user can win a bid" do
     click_link shop.name
     click_link item.title
     click_button "Bid"
+    logout
     close_bid(admin, shop, item)
     login(user)
     click_link "My Profile"
@@ -23,7 +24,7 @@ feature "Registered user can win a bid" do
 
     expect(page).to have_content(item.title)
     expect(page).to have_content(item.description)
-    expect(page).to have_content("$1.00")
+    expect(page).to have_content("$2.00")
     expect(page).to have_content("Status")
     expect(page).to have_link("Won")
   end

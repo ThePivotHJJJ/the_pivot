@@ -31,7 +31,7 @@ feature "Business admin can close bid" do
     expect(page).to have_content("Item #{item.title} has been closed for bidding")
     expect(page).to_not have_link("Bid")
     expect(page).to have_content("This item is closed")
-    expect(page).to have_content("Item won for $1.00")
+    expect(page).to have_content("Item won for $2.00")
     expect(page).to_not have_link("Close bidding")
   end
 end

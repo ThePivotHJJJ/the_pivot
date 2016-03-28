@@ -11,7 +11,7 @@ module Helpers
 
   def logout
     visit "/"
-    click_on "Sign Out"
+    click_link "Sign Out"
   end
 
   def create_business_admin_and_shop
@@ -51,7 +51,6 @@ module Helpers
   end
 
   def close_bid(admin, shop, item)
-    logout
     login(admin)
     visit shop_item_path(shop: shop.slug, id: item.id)
     click_link "Close bidding"
@@ -91,6 +90,19 @@ module Helpers
         item_id: item.id, quantity: 2, subtotal: 100
       )
     end
+  end
+
+  def user_wins_bid(user, admin, shop, item)
+    visit root_path
+    click_link "Shops"
+    click_link shop.name
+    click_link item.title
+    click_button "Bid"
+    logout
+    close_bid(admin, shop, item)
+    login(user)
+    click_link "My Profile"
+    click_link "Active Bids"
   end
 
   def create_roles

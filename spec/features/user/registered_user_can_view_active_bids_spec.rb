@@ -22,7 +22,7 @@ feature "Registered user can view active bids" do
     expect(page).to have_link(item.title)
     expect(page).to have_content(item.description)
     expect(page).to have_content("My Bid")
-    expect(page).to have_content("$1.00")
+    expect(page).to have_content("$2.00")
     expect(page).to have_content("Current Bid")
   end
 end

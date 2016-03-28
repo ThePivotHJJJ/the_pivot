@@ -17,6 +17,6 @@ feature "Registered user can place a bid on an item" do
     click_button "Bid"
 
     expect(current_path).to eq("/#{shop.slug}/items/#{item.id}")
-    expect(page).to have_content("Placed a bid for $1.00 on #{item.title}")
+    expect(page).to have_content("Placed a bid for $2.00 on #{item.title}")
   end
 end
