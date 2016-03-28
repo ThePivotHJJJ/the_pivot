@@ -60,5 +60,6 @@ private
     return true if @controller == "shops" && @action.in?(%w(index show new))
     return true if @controller == "shop/items" && @action.in?(%w(index show))
     return true if @controller == "orders" && @action.in?(%w(create))
+    return true if @controller == "bids" && @action.in?(%w(create))
   end
 end
