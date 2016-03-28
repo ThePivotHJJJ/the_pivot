@@ -30,6 +30,14 @@ class Item < ActiveRecord::Base
     Item.all.each { |item| item.active }
   end
 
+  def price
+    if bid? && !bids.empty?
+      max_bid
+    else
+      super
+    end
+  end
+
   def create_tags(item_tags)
     item_tags.each do |tag|
       items_tag = Tag.find_or_create_by(name: "#{tag}")

@@ -22,7 +22,7 @@ feature "Registered user can win a bid" do
 
     expect(page).to have_content(item.title)
     expect(page).to have_content(item.description)
-    expect(page).to have_content("$1.00")
+    expect(page).to have_content("$2.00")
     expect(page).to have_content("Status")
     expect(page).to have_link("Won")
   end

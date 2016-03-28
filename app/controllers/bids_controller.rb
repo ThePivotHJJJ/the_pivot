@@ -10,7 +10,7 @@ class BidsController < ApplicationController
     if item.bids.any?
       bid.update(bid_price: item.max_bid + 100)
     else
-      bid.update(bid_price: 100)
+      bid.update(bid_price: item.price + 100)
     end
 
     bid.save
