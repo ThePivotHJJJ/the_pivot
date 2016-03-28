@@ -16,7 +16,20 @@ module Helpers
 
   def create_business_admin_and_shop
     create_roles
-    user = User.create(username: "Brock", password: "password")
+
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Brock"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    click_on "Sign Out"
+
+    user = User.find_by(username: "Brock")
     login(user)
 
     visit root_path
@@ -97,7 +110,6 @@ module Helpers
     fill_in "Password",  with: "password"
     click_on "Create Account"
 
-    visit "/"
     click_on "Sign Out"
   end
 end

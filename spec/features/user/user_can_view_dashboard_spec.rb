@@ -2,7 +2,9 @@ require "rails_helper"
 
 feature "user can view dashboard" do
   scenario "they are directed to their dashboard after logging in" do
-    user = User.create(username: "Brock", password: "password")
+    create_roles
+    create_registered_user
+    user = User.find_by(username: "Misty")
     login(user)
 
     expect(current_path).to eq("/dashboard")

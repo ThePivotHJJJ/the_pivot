@@ -9,7 +9,8 @@ feature "Business admin can close bid" do
     shop.items << item
     logout
 
-    user = FactoryGirl.create(:user)
+    create_registered_user
+    user = User.last
     login(user)
 
     visit shops_path
