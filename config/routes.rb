@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'shops/index'
-  end
-
   root to: "static_pages#landing"
 
   get "/login", to: "sessions#new"
