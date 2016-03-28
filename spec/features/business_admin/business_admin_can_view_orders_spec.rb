@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "business admin can view orders" do
   scenario "they see the orders table" do
+    create_roles
     create_business_admin_and_shop
     create_multiple_orders(6)
 

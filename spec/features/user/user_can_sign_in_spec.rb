@@ -2,8 +2,10 @@ require "rails_helper"
 
 feature "User can sign in" do
   scenario "they see their dashboard" do
-    user = FactoryGirl.create(:user)
-
+    create_roles
+    create_registered_user
+    user = User.find_by(username: "Misty")
+    
     visit root_path
     click_link "Sign In"
     fill_in "Username", with: user.username

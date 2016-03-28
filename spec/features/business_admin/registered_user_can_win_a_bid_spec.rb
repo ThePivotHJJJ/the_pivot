@@ -5,7 +5,8 @@ feature "Registered user can win a bid" do
     create_business_admin_and_shop
     admin = User.first
     create_item_for_shop
-    user = FactoryGirl.create(:user)
+    create_registered_user
+    user = User.find_by(username: "Misty")
     login(user)
     shop = Shop.first
     item = Item.first
@@ -15,6 +16,7 @@ feature "Registered user can win a bid" do
     click_link shop.name
     click_link item.title
     click_button "Bid"
+    logout
     close_bid(admin, shop, item)
     login(user)
     click_link "My Profile"

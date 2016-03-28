@@ -11,12 +11,25 @@ module Helpers
 
   def logout
     visit "/"
-    click_on "Sign Out"
+    click_link "Sign Out"
   end
 
   def create_business_admin_and_shop
     create_roles
-    user = User.create(username: "Brock", password: "password")
+
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Brock"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    click_on "Sign Out"
+
+    user = User.find_by(username: "Brock")
     login(user)
 
     visit root_path
@@ -38,7 +51,6 @@ module Helpers
   end
 
   def close_bid(admin, shop, item)
-    logout
     login(admin)
     visit shop_item_path(shop: shop.slug, id: item.id)
     click_link "Close bidding"
@@ -86,6 +98,7 @@ module Helpers
     click_link shop.name
     click_link item.title
     click_button "Bid"
+    logout
     close_bid(admin, shop, item)
     login(user)
     click_link "My Profile"
@@ -109,7 +122,6 @@ module Helpers
     fill_in "Password",  with: "password"
     click_on "Create Account"
 
-    visit "/"
     click_on "Sign Out"
   end
 end

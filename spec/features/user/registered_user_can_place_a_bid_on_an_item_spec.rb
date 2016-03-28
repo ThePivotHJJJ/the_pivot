@@ -2,8 +2,11 @@ require "rails_helper"
 
 feature "Registered user can place a bid on an item" do
   scenario "they see a message that they have successfully placed a bid" do
-    user = FactoryGirl.create(:user)
+    create_roles
+    create_registered_user
+    user = User.find_by(username: "Misty")
     login(user)
+    
     shop = Shop.create(name: "Gifs for Good")
     item = FactoryGirl.create(:item, bid: true)
     shop.items << item

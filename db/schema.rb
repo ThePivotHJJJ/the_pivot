@@ -50,12 +50,10 @@ ActiveRecord::Schema.define(version: 20160327211419) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "shop_id"
-    t.integer  "status_id"
     t.boolean  "bid",                default: false
   end
 
   add_index "items", ["shop_id"], name: "index_items_on_shop_id", using: :btree
-  add_index "items", ["status_id"], name: "index_items_on_status_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -92,12 +90,6 @@ ActiveRecord::Schema.define(version: 20160327211419) do
     t.string   "slug"
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -124,7 +116,6 @@ ActiveRecord::Schema.define(version: 20160327211419) do
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "shops"
-  add_foreign_key "items", "statuses"
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

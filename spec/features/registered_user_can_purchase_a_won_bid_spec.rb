@@ -5,12 +5,13 @@ feature "Registered user can purchase a won bid" do
     create_business_admin_and_shop
     admin = User.first
     create_item_for_shop
-    user = FactoryGirl.create(:user)
+    create_registered_user
+    user = User.last
     login(user)
     shop = Shop.first
     item = Item.first
 
-    user_wins_bid(user, admin, shop , item)
+    user_wins_bid(user, admin, shop, item)
     click_link "Won"
     click_link "Cart"
 
