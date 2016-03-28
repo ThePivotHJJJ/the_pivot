@@ -10,17 +10,17 @@ feature "Registered user can purchase a won bid" do
     shop = Shop.first
     item = Item.first
 
-    user_wins_bid(admin, shop , item)
+    user_wins_bid(user, admin, shop , item)
     click_link "Won"
     click_link "Cart"
 
     expect(page).to have_content(item.title)
     expect(page).to have_content(item.description)
-    expect(page).to have_content(item.price)
+    expect(page).to have_content("$2.00")
 
-    click_link "checkout"
+    click_link "Checkout"
 
     expect(current_path).to eq(new_charge_path)
-    expect(page).to have_content("Please provide a payment method to continue your purchase")
+    expect(page).to have_content("Please provide a payment method to continue with your purchase.")
   end
 end

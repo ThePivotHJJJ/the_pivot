@@ -80,7 +80,7 @@ module Helpers
     end
   end
 
-  def user_wins_bid(admin, shop, item)
+  def user_wins_bid(user, admin, shop, item)
     visit root_path
     click_link "Shops"
     click_link shop.name
