@@ -21,6 +21,7 @@
           <td><%= format_price(bid.bid_price) %></td>
           <td><%= format_price(bid.item.max_bid) %></td>
           <td><%= item_status(bid, current_user) %></td>
+          <td><%= send(@presenter.status_link, bid.item.id) %></td>
         </tr>
       <% end %>
     </tbody>
