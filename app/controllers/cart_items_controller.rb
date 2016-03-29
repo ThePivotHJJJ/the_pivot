@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
     flash[:success] =
-      "You added #{pluralize(@cart.cart_items.first.quantity, 'license')} for #{item.title}"
+      "You added #{pluralize(@cart.cart_items.first.quantity, 'item')} to your cart"
     redirect_to items_path
   end
 
@@ -18,7 +18,7 @@ class CartItemsController < ApplicationController
   def destroy
     item = find_item
     @cart.remove_item(item.id)
-    flash[:success] = "Successfully removed license for
+    flash[:success] = "Successfully removed item
     #{view_context.link_to item.title, item_path(item.id)}"
     if @cart.contents.empty?
       redirect_to items_path
