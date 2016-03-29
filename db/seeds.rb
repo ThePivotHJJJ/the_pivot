@@ -1,11 +1,46 @@
-# class Seed
-#   def start
+class Seed
+  def start
+      create_roles
+      create_platform_admin
+      create_shops
+      create_business_admins
 #     create_tags
 #     create_items
 #     create_users
 #     create_orders
 #     create_order_items
-#   end
+  end
+
+  def create_roles
+    Role.create(name: "registered_user")
+    Role.create(name: "business_admin")
+    Role.create(name: "platform_admin")
+    puts "created roles"
+  end
+
+  def create_platform_admin
+    user = User.create(username: "Jorge@turing.io", 
+                       password: "password")
+    user.roles << Role.find_by(name: "platform_admin")
+    puts "created platform admin"
+  end
+
+  def create_shops
+    20.times do
+     shop = Shop.create(name: Faker::Company.name) 
+     puts "created the shop #{shop.name}"
+   end
+  end
+
+  def create_business_admins
+    40.times do
+      user = User.create(username: Faker::Internet.user_name,
+                         password: "password",
+                         shop_id: Shop.all.sample.id)
+      user.roles << Role.find_by(name: "business_admin")
+      puts "created business admin #{user.username} for shop #{user.shop_id}" 
+    end
+  end
 
 #   def create_tags
 #     10.times { Tag.create!(name: Faker::Hipster.word)}
@@ -34,9 +69,9 @@
 #   def create_order_items
 
 #   end
-# end
+end
 
-# Seed.new.start
+Seed.new.start
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
