@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "users#show"
+    post "/update", to: "users#update_role", as: :update_role
     resources :users, only: [:index, :update]
     resources :orders, only: [:index, :update, :show]
     resources :items, only: [:new, :create, :edit, :update, :destroy]

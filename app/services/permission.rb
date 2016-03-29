@@ -37,7 +37,7 @@ private
   end
 
   def business_admin_permissions
-    return true if @controller == "admin/users" && @action.in?(%w(show index update))
+    return true if @controller == "admin/users" && @action.in?(%w(show index update_role))
     return true if @controller == "admin/orders" && @action.in?(%w(show index update))
     return true if @controller == "admin/items" && @action.in?(%w(create new edit update destroy))
     return true if @controller == "items" && @action.in?(%w(update))

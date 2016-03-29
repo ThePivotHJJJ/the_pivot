@@ -29,4 +29,27 @@ feature "platform admin can manage other admins" do
       expect(page).not_to have_content("Sock")
     end
   end
+
+
+  scenario "they promote a user" do
+    create_roles
+    create_registered_user
+    create_platform_admin
+
+    expect(current_path).to eq admin_dashboard_path
+
+    click_on "Manage Admins"
+
+    expect(current_path).to eq admin_users_path
+
+    expect(page).not_to have_content("Misty")
+
+    fill_in "Username", with: "Misty"
+
+    click_on "Promote/Demote"
+
+    expect(current_path).to eq admin_users_path
+save_and_open_page
+    expect(page).to have_content("Misty")
+  end
 end

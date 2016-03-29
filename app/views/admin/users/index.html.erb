@@ -1,25 +1,12 @@
-<div class="shop-admins">
-  <h1>Current Shop Admins</h1>
-  <div id="admin-list">
-    <% if platform_admin? %>
-      <% @admins.each do |user| %>
-        <div id="admin-<%=user.id%>">
-          <%= link_to "Remove #{user.username} as shop admin", admin_user_path(user), method: :put %>
-        </div>
-      <% end %>
-    <% else business_admin? %>
-      <% @shop_admins.each do |user| %>
-        <div class="admin">
-          <%= link_to "Remove #{user.username} as shop admin", admin_user_path(user), method: :put %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-<div class="non-admin-users">
-  <h1>Other Users</h1>
-  <% @non_admin_users.each do |user| %>
-    <%= link_to "Make #{user.username} shop admin", admin_user_path(user), method: :put %>
-  <% end %>
-</div>
+<%= form_tag admin_update_role_path do %>
+Username: <%= text_field_tag "Username"%>
+<% if platform_admin? %>
+<%= options_for_select(@shop_ids) %>
+<% end %>
+<%= submit_tag "Promote/Demote" %>
+<% end %>
+<h1>Current Shop Admins</h1>
+<% @admins.each do |user| %>
+<%binding.pry %>
+  <%= user.username %>
+<% end %>
