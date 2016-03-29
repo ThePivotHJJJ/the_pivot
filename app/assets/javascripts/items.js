@@ -1,11 +1,12 @@
-$bid = $('#item_bid_true');
-$buyItNow = $('#item_bid_false');
-$price = $('label[for=item_price]');
+var doc = document;
+var bid = doc.getElementById('item_bid_true');
+var buyItNow = doc.getElementById('item_bid_false');
+var price = doc.querySelector('label[for=item_price]');
 
-$bid.on('change', function () {
-  $price.html('Starting Bid');
-});
+bid.addEventListener('change', function() {
+  price.innerHTML = "Starting Bid";
+}, false);
 
-$buyItNow.on('change', function () {
-  $price.html('Price');
-});
+buyItNow.addEventListener('change', function() {
+  price.innerHTML = "Price";
+}, false);
