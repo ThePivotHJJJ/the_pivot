@@ -145,4 +145,32 @@ module Helpers
     login(user)
     visit admin_dashboard_path
   end
+
+  def create_second_business_admin_and_shop
+    create_roles
+
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Sock"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    click_on "Sign Out"
+
+    user = User.find_by(username: "Sock")
+    login(user)
+
+    visit root_path
+
+    within('.navbar-collapse') do
+      click_on "Sell on PABOI"
+    end
+
+    fill_in "Name", with: "Some Clever Store Name"
+    click_on "Create shop"
+  end
 end
