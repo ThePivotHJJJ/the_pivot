@@ -124,4 +124,25 @@ module Helpers
 
     click_on "Sign Out"
   end
+
+  def create_platform_admin
+    create_roles
+
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Jim"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    click_on "Sign Out"
+
+    user = User.find_by(username: "Jim")
+    user.roles << Role.find_by(name: "platform_admin")
+    login(user)
+    visit admin_dashboard_path
+  end
 end

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="items" id="shop-list">
+   <div class="row text-center">
+      <h1>All Shops</h1>
+      <% @shops.each do |shop| %>
+        <div id="shop-<%=shop.id%>">
+          <%= link_to shop.name, shop_path(shop: shop.slug) %>
+          <%= link_to "Edit Shop", edit_shop_path(id: shop.id)%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
