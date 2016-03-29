@@ -2,6 +2,7 @@ class Admin::UsersController < Admin::BaseController
   def index
     @non_admin_users = User.where(shop_id: nil)
     @shop_admins = User.where(shop_id: current_user.shop_id)
+    @admins = User.where.not(shop_id: nil)
   end
 
   def update
