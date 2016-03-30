@@ -65,6 +65,7 @@ class Seed
         name: Faker::Company.name
       )
       add_business_admin(shop, i)
+      add_items(shop)
       puts "Shops #{i}: #{shop.name} created!"
     end
   end
@@ -78,6 +79,21 @@ class Seed
         email:    Faker::Internet.email
       )
       puts "Business Admin #{i}: #{user.username} created!"
+    end
+
+    def add_items(shop)
+      Tag.all.each do |tag|
+        50.times do |i|
+          item = tag.items.create!(
+            title: Faker::Commerce.product_name,
+            description: Faker::Lorem.paragraph,
+            price: Faker::Commerce.price,
+            image: "https://unsplash.it/300/?random",
+            shop_id: shop.id
+          )
+          puts "Item #{i}: Item created for #{tag.name} and #{shop.name}"
+        end
+      end
     end
 end
 
