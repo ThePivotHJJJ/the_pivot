@@ -8,11 +8,9 @@ class Seed
     seed.generate_tags
     seed.generate_shops
 
-    # 20 total businesses
     # 50 items per tags
     # 100 registered customers, one with the following data:
     #   10 orders per registered customer
-    #   1 business admins per business
 
   end
 
@@ -66,9 +64,21 @@ class Seed
       shop = Shop.create!(
         name: Faker::Company.name
       )
+      add_business_admin(shop, i)
       puts "Shops #{i}: #{shop.name} created!"
     end
   end
+
+  private
+
+    def add_business_admin(shop, i)
+      user = shop.users.create!(
+        username: Faker::Name.name,
+        password: "password",
+        email:    Faker::Internet.email
+      )
+      puts "Business Admin #{i}: #{user.username} created!"
+    end
 end
 
 Seed.start
