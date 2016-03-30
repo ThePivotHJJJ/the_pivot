@@ -22,4 +22,9 @@ class User < ActiveRecord::Base
   def registered_user?
     roles.exists?(name: "registered_user")
   end
+
+  def latest_bid(item_id)
+    bids.where(item_id: item_id).maximum(:bid_price)
+  end
+
 end

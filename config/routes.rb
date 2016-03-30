@@ -41,6 +41,4 @@ Rails.application.routes.draw do
 
   resources :bids, only: [:create, :destroy]
   get "/dashboard/bids", to: "bids#index", as: :user_bids
-
-  post "/notification", to: "notification#create"
 end
