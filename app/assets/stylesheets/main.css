@@ -7,6 +7,23 @@
   font-family: 'Roboto', sans-serif;
 }
 
+#site form {
+  padding-top: 20px;
+}
+
+#site textarea {
+  height: 200px;
+}
+
+#site input[type="submit"] {
+  padding: 20px 0;
+}
+
+#site label {
+  font-size: 2rem;
+  padding-right: 20px;
+}
+
 /*** Site Header ***/
 
 #site .navbar {
@@ -22,6 +39,7 @@
   color: rgb(77, 208, 225);
   font-family: 'Rufina', serif;
   font-size: 3rem;
+  padding-left: 0;
 }
 
 #site .navbar-brand:hover,
