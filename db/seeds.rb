@@ -5,6 +5,7 @@ class Seed
     seed.generate_platform_admin
     seed.generate_business_admin
     seed.generate_registered_user
+    seed.generate_tags
 
     # 20 total businesses
     # 10 tags
@@ -12,9 +13,6 @@ class Seed
     # 100 registered customers, one with the following data:
     #   10 orders per registered customer
     #   1 business admins per business
-    #
-    #   Username: josh@turing.io
-    #   Password: password
 
   end
 
@@ -43,12 +41,21 @@ class Seed
   end
 
   def generate_registered_user
-    user = User.create(
+    user = User.create!(
       username: "josh@turing.io",
       password: "password",
       email: "josh@turing.io"
     )
     user.roles << Role.find_by(name: "registered_user")
+  end
+
+  def generate_tags
+    10.times do |i|
+      tag = Tag.create!(
+        name: Faker::Commerce.department
+      )
+      puts "Tag #{i}: #{tag.name} created!"
+    end
   end
 end
 
