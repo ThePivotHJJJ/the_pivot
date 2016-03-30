@@ -22,6 +22,26 @@
           <p><%= link_to "Delete", admin_item_path(@item.id), method: :delete, class: "btn btn-default" %>
           <% if @item.bid? && !@item.retired? %>
             <p><%= link_to "Close bidding", bid_path(@item), method: :delete, class: "btn btn-default" %></p>
+            <div class="table-responsive container">
+              <h2>Bid History</h2>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Username</th>
+                      <th>Bid</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% @item.bids.each do |bid| %>
+                      <tr>
+                        <td><%= bid.user.username %></td>
+                        <td><%= format_price(bid.bid_price) %></td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
           <% end %>
         <% end %>
       </div>

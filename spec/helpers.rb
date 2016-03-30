@@ -125,6 +125,19 @@ module Helpers
     click_on "Sign Out"
   end
 
+  def create_second_user
+    visit "/"
+
+    within('.navbar-collapse') do
+      click_on "Register"
+    end
+
+    fill_in "Username",  with: "Ash"
+    fill_in "Password",  with: "password"
+    click_on "Create Account"
+
+    click_on "Sign Out"
+  end
   def create_platform_admin
     create_roles
 
