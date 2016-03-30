@@ -8,9 +8,7 @@ class Seed
     seed.generate_tags
     seed.generate_shops
     seed.generate_users
-    # 100 registered customers, one with the following data:
-    #   10 orders per registered customer
-
+    seed.generate_orders
   end
 
   def generate_roles
@@ -76,7 +74,19 @@ class Seed
         password: "password",
         email:    Faker::Internet.email
       )
+      user.roles << Role.find_by(name: "registered_user")
       puts "Registered User #{i}: #{user.username} created!"
+    end
+  end
+
+  def generate_orders
+    User.all.each do |user|
+      10.times do |i|
+        item = Item.find(rand(1..999))
+        order = user.orders.create(total_price: item.price, status: 0)
+        order.order_items.create(item_id: item.id, quantity: 1, subtotal: item.price)
+        puts "Order #{i}: Item #{item.title} was ordered!"
+      end
     end
   end
 
@@ -97,7 +107,7 @@ class Seed
           item = tag.items.create!(
             title: Faker::Commerce.product_name,
             description: Faker::Lorem.paragraph,
-            price: Faker::Commerce.price,
+            price: Faker::Commerce.price(1..1000.0),
             # image: "https://unsplash.it/300/?random",
             shop_id: shop.id
           )
