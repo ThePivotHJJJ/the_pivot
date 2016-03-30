@@ -2,7 +2,7 @@ class Seed
   def self.start
     seed = Seed.new
     seed.generate_roles
-    # seed.generate_platform_admin
+    seed.generate_platform_admin
 
     # 20 total businesses
     # 10 tags
@@ -26,12 +26,18 @@ class Seed
   end
 
   def generate_roles
-    Role.create(name: "registered_user")
-    Role.create(name: "business_admin")
-    Role.create(name: "platform_admin")
+    Role.create!(name: "registered_user")
+    Role.create!(name: "business_admin")
+    Role.create!(name: "platform_admin")
   end
 
   def generate_platform_admin
+    user = User.create!(
+      username: "jorge@turing.io",
+      password: "password",
+      email: "jorge@turing.io"
+    )
+    user.roles << Role.find_by(name: "platform_admin")
   end
 end
 
