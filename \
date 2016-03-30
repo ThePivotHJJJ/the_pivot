@@ -1,0 +1,20 @@
+class Seed
+  def self.start
+    seed = Seed.new
+    20 total businesses
+    10 tags
+    50 items per tags
+    100 registered customers, one with the following data:
+    Username: josh@turing.io
+    Password: password
+    10 orders per registered customer
+    1 business admins per business
+    Username: andrew@turing.io
+    Password: password
+    1 platform administrators
+    Username: jorge@turing.io
+    Password: password
+  end
+end
+
+Seed.start
