@@ -18,8 +18,7 @@ class CartItemsController < ApplicationController
   def destroy
     item = find_item
     @cart.remove_item(item.id)
-    flash[:success] = "Successfully removed item
-    #{view_context.link_to item.title, item_path(item.id)}"
+    flash[:success] = "Successfully removed item from cart"
     if @cart.contents.empty?
       redirect_to items_path
     else
