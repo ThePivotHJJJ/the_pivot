@@ -25,6 +25,9 @@ class BidsController < ApplicationController
     item = Item.find(params[:id])
     item.update(retired: true)
     flash[:success] = "Item #{item.title} has been closed for bidding"
+    # binding.pry
+    UserNotifier.inform(item.max_bid_user.email).deliver_now
+    flash[:notice] = "Email sent to #{item.max_bid_user.email} to notify #{item.max_bid_user.username} that they've won their bid!"
     redirect_to shop_item_path(shop: item.shop.slug, id: item.id)
   end
 end
