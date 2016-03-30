@@ -1,21 +1,48 @@
+<section class="col-md-12 text-align-left row">
+  <div class="container">
+    <h1>New Item</h1>
 
-<div class="col-md-offset-5 col-md-4 col-md-offset-3 text-align-left">
+    <%= form_for(@item, url: admin_items_path) do |f| %>
+      <div class="form-group">
+        <div class="row">
+          <span class="col-md-2">
+            <%= f.label :bid_true, "Bid" %>
+            <%= f.radio_button(:bid, true) %>
+          </span>
 
-<%= form_for @item, url: admin_items_path do |f| %>
-  <%= f.label :bid_true, "Bid" %>
-  <%= f.radio_button(:bid, true) %>
-  <%= f.label :bid_false, "Buy it now" %>
-  <%= f.radio_button(:bid, false) %>
-  <h4><%= f.label :title %></h4>
-  <%= f.text_field :title %></h4>
-  <h4><%= f.label :description %></h4>
-  <%= f.text_field :description %></h4>
-  <h4><%= f.label :price %></h4>
-  <%= f.text_field :price %></h4>
-  <h4><%= label_tag :tags %></h4>
-  <%= text_field_tag :tags %></h4>
-  <h4><%= f.label :image %></h4>
-  <%= f.file_field :image %></h4>
-  <h4><%= f.submit "add new item!", class: "btn btn-primary" %></h4>
-<% end %>
-</div>
+          <span class="col-md-2">
+            <%= f.label :bid_false, "Buy it now" %>
+            <%= f.radio_button(:bid, false) %>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price %><br>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag :tags %><br>
+        <%= text_field_tag :tags %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
+
+      <%= f.submit "add new item!", class: "btn btn-primary col-xs-12" %>
+    <% end %>
+  </div>
+</section>

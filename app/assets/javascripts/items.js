@@ -1,12 +1,18 @@
-var doc = document;
-var bid = doc.getElementById('item_bid_true');
-var buyItNow = doc.getElementById('item_bid_false');
-var price = doc.querySelector('label[for=item_price]');
+'use strict';
+const doc = document;
+
+let bid = doc.getElementById('item_bid_true');
+let buyItNow = doc.getElementById('item_bid_false');
+let price = doc.querySelector('label[for=item_price]');
+
+function changeText(el, text) {
+  el.innerHTML = text;
+}
 
 bid.addEventListener('change', function() {
-  price.innerHTML = "Starting Bid";
+  changeText(price, "Starting Bid");
 }, false);
 
 buyItNow.addEventListener('change', function() {
-  price.innerHTML = "Price";
+  changeText(price, "Price");
 }, false);
