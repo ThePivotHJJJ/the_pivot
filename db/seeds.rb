@@ -7,8 +7,7 @@ class Seed
     seed.generate_registered_user
     seed.generate_tags
     seed.generate_shops
-
-    # 50 items per tags
+    seed.generate_users
     # 100 registered customers, one with the following data:
     #   10 orders per registered customer
 
@@ -70,6 +69,17 @@ class Seed
     end
   end
 
+  def generate_users
+    100.times do |i|
+      user = User.create!(
+        username: Faker::Name.name,
+        password: "password",
+        email:    Faker::Internet.email
+      )
+      puts "Registered User #{i}: #{user.username} created!"
+    end
+  end
+
   private
 
     def add_business_admin(shop, i)
@@ -88,7 +98,7 @@ class Seed
             title: Faker::Commerce.product_name,
             description: Faker::Lorem.paragraph,
             price: Faker::Commerce.price,
-            image: "https://unsplash.it/300/?random",
+            # image: "https://unsplash.it/300/?random",
             shop_id: shop.id
           )
           puts "Item #{i}: Item created for #{tag.name} and #{shop.name}"
