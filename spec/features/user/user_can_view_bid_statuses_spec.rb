@@ -13,9 +13,11 @@ feature "user can view bid statuses" do
 
     user_wins_bid(user, admin, shop, item)
 
-    expect(page).to have_content "Won"
-    expect(page).to_not have_content "Lost"
-    expect(page).to_not have_content "Open"
+    within(".status-#{item.id}") do
+      expect(page).to have_content "Won"
+      expect(page).to_not have_content "Lost"
+      expect(page).to_not have_content "Open"
+    end
   end
 
   scenario "they see that they lost" do
@@ -46,9 +48,11 @@ feature "user can view bid statuses" do
 
     click_on "My Bids"
 
-    expect(page).to have_content "Lost"
-    expect(page).to_not have_content "Won"
-    expect(page).to_not have_content "Open"
+    within(".status-#{item.id}") do
+      expect(page).to have_content "Lost"
+      expect(page).to_not have_content "Won"
+      expect(page).to_not have_content "Open"
+    end
   end
 
   scenario "they see that it's open" do
@@ -70,8 +74,10 @@ feature "user can view bid statuses" do
     click_on "My Profile"
     click_on "My Bids"
 
-    expect(page).to have_content "Open"
-    expect(page).to_not have_content "Lost"
-    expect(page).to_not have_content "Won"
+    within(".status-#{item.id}") do
+      expect(page).to have_content "Open"
+      expect(page).to_not have_content "Lost"
+      expect(page).to_not have_content "Won"
+    end
   end
 end

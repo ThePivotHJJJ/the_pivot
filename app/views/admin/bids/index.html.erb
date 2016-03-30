@@ -1,0 +1,28 @@
+<div class="table-responsive container">
+  <h1>All Bids</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Item Title</th>
+        <th>Item Description</th>
+        <th>User</th>
+        <th>User's Bid</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @item_bids.each do |bid| %>
+        <tr>
+          <td>
+            <%= link_to bid.item.title, shop_item_path(shop: bid.item.shop, id: bid.item)%>
+          </td>
+          <td><%= bid.item.description %></td>
+          <td><%= bid.user.username %></td>
+          <td><%= format_price(bid.bid_price) %></td>
+          <td class="status-<%= bid.item.id %>"><%= admin_item_status(bid) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

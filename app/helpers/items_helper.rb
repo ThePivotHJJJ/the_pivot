@@ -10,4 +10,12 @@ module ItemsHelper
       "Open"
     end
   end
+
+  def admin_item_status(bid)
+    if bid.item.retired?
+      "Closed"
+    else
+      "Open"
+    end
+  end
 end
