@@ -11,6 +11,8 @@ feature "Visitor can register" do
 
     fill_in "Username",  with: "Brock"
     fill_in "Password",  with: "password"
+    fill_in "Email", with: "mistyqtestemail@gmail.com"
+
     click_on "Create Account"
 
     expect(page).to have_content("Welcome, Brock")
