@@ -2,6 +2,9 @@
   <div class="items">
    <div class="row text-center">
      <h1>all_items</h1>
+     <%= form_tag("#", id: "itemsFuzzySearch") do %>
+       <%= text_field_tag(id: "fuzzySearchText") %>
+     <% end %>
     <% @items.each do |item| %>
     <%= render partial: './item_column', locals: { item: item } %>
     <% end %>
@@ -11,3 +14,44 @@
     <%= paginate @items %>
   </div>
 </div>
+
+<script>
+  // var $searchBox = $('input[type=text]');
+  // var $items = $('.item');
+  //
+  // function match(search, text) {
+  //   var search = search.toUpperCase();
+  //   var text = text.toUpperCase();
+  //
+  //   var j = -1;
+  //
+  //   for (var i = 0; i < search.length; i++) {
+  //     var l = search[i];
+  //
+  //     if (l === '') {
+  //       continue;
+  //     }
+  //
+  //     j = text.indexOf(l, j + 1);
+  //     if (j === -1) {
+  //       return false;
+  //     }
+  //   }
+  //
+  //   return true;
+  // }
+  //
+  // $searchBox.on('keyup', function() {
+  //   var $searchVal = $searchBox.val();
+  //
+  //   $items.each(function(i, item) {
+  //     $itemVal = $(item).text();
+  //
+  //     if (match($searchVal, $itemVal)) {
+  //       $(item).css('display', 'initial');
+  //     } else {
+  //       $(item).css('display', 'none');
+  //     }
+  //   });
+  // });
+</script>
