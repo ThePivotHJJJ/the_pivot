@@ -6,9 +6,9 @@ class Seed
     seed.generate_business_admin
     seed.generate_registered_user
     seed.generate_tags
+    seed.generate_shops
 
     # 20 total businesses
-    # 10 tags
     # 50 items per tags
     # 100 registered customers, one with the following data:
     #   10 orders per registered customer
@@ -29,6 +29,7 @@ class Seed
       email:    "jorge@turing.io"
     )
     user.roles << Role.find_by(name: "platform_admin")
+    puts "#{user.username} was created!"
   end
 
   def generate_business_admin
@@ -38,6 +39,7 @@ class Seed
       email:    "andrew@turing.io"
     )
     user.roles << Role.find_by(name: "business_admin")
+    puts "#{user.username} was created!"
   end
 
   def generate_registered_user
@@ -47,6 +49,7 @@ class Seed
       email: "josh@turing.io"
     )
     user.roles << Role.find_by(name: "registered_user")
+    puts "#{user.username} was created!"
   end
 
   def generate_tags
@@ -55,6 +58,15 @@ class Seed
         name: Faker::Commerce.department
       )
       puts "Tag #{i}: #{tag.name} created!"
+    end
+  end
+
+  def generate_shops
+    20.times do |i|
+      shop = Shop.create!(
+        name: Faker::Company.name
+      )
+      puts "Shops #{i}: #{shop.name} created!"
     end
   end
 end
