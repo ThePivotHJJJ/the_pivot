@@ -1,7 +1,7 @@
 require "rails_helper"
 
-feature "Registered user can view active bids" do
-  scenario "they see their active bids" do
+feature "Registered user can view My Bids" do
+  scenario "they see their My Bids" do
     create_roles
     create_registered_user
     user = User.find_by(username: "Misty")
@@ -16,7 +16,7 @@ feature "Registered user can view active bids" do
     click_link item.title
     click_button "Bid"
     click_link "My Profile"
-    click_link "Active Bids"
+    click_link "My Bids"
 
     expect(current_path).to eq("/dashboard/bids")
     expect(page).to have_link(item.title)

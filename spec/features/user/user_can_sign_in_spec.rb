@@ -15,7 +15,7 @@ feature "User can sign in" do
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Welcome, #{user.username}")
     expect(page).to have_link("Edit My Profile")
-    expect(page).to have_link("Active Bids")
+    expect(page).to have_link("My Bids")
     expect(page).to have_link("My Orders")
     expect(page).to have_link("Manage My Shop")
     expect(page).to have_link("Sign Out")
