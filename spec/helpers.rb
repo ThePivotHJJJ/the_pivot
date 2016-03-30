@@ -103,7 +103,7 @@ module Helpers
     close_bid(admin, shop, item)
     login(user)
     click_link "My Profile"
-    click_link "Active Bids"
+    click_link "My Bids"
   end
 
   def create_roles

@@ -20,7 +20,7 @@ feature "Registered user can win a bid" do
     close_bid(admin, shop, item)
     login(user)
     click_link "My Profile"
-    click_link "Active Bids"
+    click_link "My Bids"
 
     expect(page).to have_content(item.title)
     expect(page).to have_content(item.description)
