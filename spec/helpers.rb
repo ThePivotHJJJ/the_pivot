@@ -136,6 +136,8 @@ module Helpers
 
     fill_in "Username",  with: "Ash"
     fill_in "Password",  with: "password"
+    fill_in "Email", with: "mistyqtestemail@gmail.com"
+
     click_on "Create Account"
 
     click_on "Sign Out"
