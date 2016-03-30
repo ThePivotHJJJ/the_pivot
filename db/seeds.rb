@@ -3,6 +3,7 @@ class Seed
     seed = Seed.new
     seed.generate_roles
     seed.generate_platform_admin
+    seed.generate_business_admin
 
     # 20 total businesses
     # 10 tags
@@ -35,9 +36,18 @@ class Seed
     user = User.create!(
       username: "jorge@turing.io",
       password: "password",
-      email: "jorge@turing.io"
+      email:    "jorge@turing.io"
     )
     user.roles << Role.find_by(name: "platform_admin")
+  end
+
+  def generate_business_admin
+    user = User.create!(
+      username: "andrew@turing.io",
+      password: "password",
+      email:    "andrew@turing.io"
+    )
+    user.roles << Role.find_by(name: "business_admin")
   end
 end
 
