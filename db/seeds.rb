@@ -108,7 +108,7 @@ class Seed
             title: Faker::Commerce.product_name,
             description: Faker::Lorem.paragraph,
             price: Faker::Commerce.price(1..1000.0),
-            # image: "https://unsplash.it/300/?random",
+            image: "https://unsplash.it/300/?random",
             shop_id: shop.id
           )
           puts "Item #{i}: Item created for #{tag.name} and #{shop.name}"
