@@ -6,9 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user.orders.find(params[:id])
-      @order = Order.find(params[:id])
-    end
+    @order = Order.find(params[:id])
   end
 
   def create

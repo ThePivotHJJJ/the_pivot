@@ -5,11 +5,10 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
-    @shop = current_user.shop
     if @item.save
-      tags = params[:tags].split(", ")
-      @item.create_tags(tags)
-      @shop.items << @item
+      @item.create_tags(params[:tags].split(", "))
+      current_user.shop.items << @item
+
       flash[:success] = "item has been successfully added"
       redirect_to shop_item_path(shop: @item.shop.slug, id: @item.id)
     else
@@ -25,10 +24,7 @@ class Admin::ItemsController < Admin::BaseController
   def update
     @item = find_item
     if @item.update(item_params)
-      if params[:tags]
-        tags = params[:tags].split(", ")
-        @item.create_tags(tags)
-      end
+      @item.create_tags(params[:tags].split(", ")) if params[:tags]
       redirect_to shop_item_path(shop: @item.shop.slug, id: @item.id)
     else
       flash.now[:error] = "Invalid input"
@@ -37,23 +33,13 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def destroy
-    @item = find_item
-    @item.destroy
+    find_item.destroy
     flash[:success] = "This item was successfully deleted."
     redirect_to root_url
   end
 
 private
-
   def item_params
     params.require(:item).permit(:title, :description, :price, :tag, :image, :retired, :bid)
-  end
-
-  def redirect_to_back(default = root_url)
-    if request.env["HTTP_REFERER"].present? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-      redirect_to :back
-    else
-      redirect_to default
-    end
   end
 end
