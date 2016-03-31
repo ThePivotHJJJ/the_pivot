@@ -188,3 +188,7 @@ footer h3 {
 #site .user-sidebar h3 {
   font-size: 1.4rem;
 }
+
+#site .item-show-photo img {
+  padding-top: 30px;
+}
