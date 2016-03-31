@@ -1,14 +1,20 @@
-<div class="login">
-  <div class="text-center">
+<section class="col-md-12 text-align-left row">
+  <div class="container login">
     <h1>Login</h1>
     <%= form_for(:session, url: login_path) do |f| %>
-      <h4><%= f.label :username %></h4>
-      <h4><%= f.text_field :username %></h4>
-      <h4><%= f.label :password %></h4>
-      <h4><%= f.password_field :password %></h4>
-      <%= f.submit "Login", class: "btn btn-primary btn-font-size" %><br>
-      <br>
-      <%= link_to "Haven't Registered? Sign up here!", new_user_path, class: "btn btn-primary btn-font-size" %>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Login", class: "btn btn-primary col-xs-12" %><br>
     <% end %>
+
+    <%= link_to "Haven't Registered? Sign up here!", new_user_path %>
   </div>
-</div>
+</section>

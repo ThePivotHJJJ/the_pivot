@@ -1,11 +1,11 @@
 <div class="table-responsive container">
-  <h1>Active Bids</h1>
+  <h1>My Bids</h1>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
         <th>Title</th>
         <th>Description</th>
-        <th>My Bid</th>
+        <th>My Latest Bid</th>
         <th>Current Bid</th>
         <th>Status</th>
       </tr>
@@ -13,15 +13,21 @@
 
     <tbody>
       <% @bids.each do |bid| %>
+      <%  if bid.bid_price == current_user.latest_bid(bid.item.id) %>
         <tr>
           <td>
             <%= link_to bid.item.title, shop_item_path(shop: bid.item.shop, id: bid.item)%>
           </td>
           <td><%= bid.item.description %></td>
-          <td><%= format_price(bid.bid_price) %></td>
+          <td><%= format_price(current_user.latest_bid(bid.item.id)) %></td>
           <td><%= format_price(bid.item.max_bid) %></td>
-          <td><%= item_status(bid, current_user) %></td>
+          <% if ItemStatusPresenter.bid_status(bid, current_user) == "Won" %>
+          <td class="status-<%= bid.item.id %>"><%= winning_bid_link(bid.item.id) %></td>
+          <% else %>
+          <td class="status-<%= bid.item.id %>"><%= ItemStatusPresenter.bid_status(bid, current_user) %></td>
+          <% end %>
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

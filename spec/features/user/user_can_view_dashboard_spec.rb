@@ -9,11 +9,8 @@ feature "user can view dashboard" do
 
     expect(current_path).to eq("/dashboard")
     expect(page).to have_content("Welcome, #{user.username}")
-    expect(page).to have_content("Recently Bought")
-    expect(page).to have_content("Recently Sold")
-    expect(page).to have_content("Recently Viewed")
     expect(page).to have_content("Edit My Profile")
-    expect(page).to have_content("Active Bids")
+    expect(page).to have_content("My Bids")
     expect(page).to have_content("My Orders")
     expect(page).to have_content("Manage My Shop")
   end

@@ -42,6 +42,7 @@ private
     return true if @controller == "admin/items" && @action.in?(%w(create new edit update destroy))
     return true if @controller == "items" && @action.in?(%w(update))
     return true if @controller == "bids" && @action.in?(%w(destroy))
+    return true if @controller == "admin/bids" && @action.in?(%w(index))
 
     registered_user_permissions
   end
