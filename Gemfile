@@ -44,9 +44,13 @@ gem 'aws-sdk', '>= 2.0.0'
 gem 'figaro'
 gem "kaminari"
 
+group :staging, :production, :development, :test do
+  gem 'pry-rails'
+  gem 'pry-nav'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'pry-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
