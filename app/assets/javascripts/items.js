@@ -1,9 +1,9 @@
 'use strict';
-const doc = document;
+var doc = document;
 
-let bid = doc.getElementById('item_bid_true');
-let buyItNow = doc.getElementById('item_bid_false');
-let price = doc.querySelector('label[for=item_price]');
+var bid = doc.getElementById('item_bid_true');
+var buyItNow = doc.getElementById('item_bid_false');
+var price = doc.querySelector('label[for=item_price]');
 
 function changeText(el, text) {
   el.innerHTML = text;
