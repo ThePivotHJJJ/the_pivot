@@ -2,7 +2,6 @@ class Item < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :image, presence: true
 
   has_many :item_tags, dependent: :destroy
   has_many :tags, through: :item_tags
