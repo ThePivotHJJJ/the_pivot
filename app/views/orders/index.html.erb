@@ -1,6 +1,11 @@
-<div class="text-center">
-<h1>Your orders</h1>
-  <% @orders.each do |order| %>
-    <h4> <%= link_to "Order #{order.id}", order_path(order) %> </h4>
-  <% end %>
+<div class="row text-center row">
+  <%= render partial: "partials/sidebar" %>
+
+  <div class="col-md-4 col-xs-12">
+    <h1>Your orders</h1>
+      <% @orders.each do |order| %>
+        <h4> <%= link_to "Order #{order.id}", order_path(order) %> </h4>
+      <% end %>
+    </div>
+  </div>
 </div>

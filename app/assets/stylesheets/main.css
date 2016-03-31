@@ -177,3 +177,47 @@ footer h3 {
 #site .item h3 {
   font-size: 1.6rem;
 }
+
+/*** User Sidebar ***/
+
+#site .user-sidebar {
+  padding-left: 10%;
+  padding-top: 0.5%;
+}
+
+#site .user-sidebar h3 {
+  font-size: 1.4rem;
+}
+
+#site .item-show-photo img {
+  padding-top: 30px;
+}
+
+#site .item-show-photo form {
+  padding: 0;
+}
+
+/*** Bid button ***/
+
+#site input[type=submit].bid-button {
+  padding: 10px 20px;
+  margin: 0;
+}
+
+/*** Update button ***/
+
+#site input[type=submit].update-btn {
+  margin: 0;
+  padding: 10px;
+}
+
+#site .table-form form {
+  padding-top: 0;
+}
+
+/*** Admin Stying ***/
+
+#site .add-admin input[type=submit],
+#site .remove-admin input[type=submit] {
+  margin-bottom: 40px;
+}
