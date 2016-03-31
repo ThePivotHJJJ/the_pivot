@@ -5,7 +5,7 @@ feature "User can sign in" do
     create_roles
     create_registered_user
     user = User.find_by(username: "Misty")
-    
+
     visit root_path
     click_link "Sign In"
     fill_in "Username", with: user.username
@@ -17,7 +17,6 @@ feature "User can sign in" do
     expect(page).to have_link("Edit My Profile")
     expect(page).to have_link("My Bids")
     expect(page).to have_link("My Orders")
-    expect(page).to have_link("Manage My Shop")
     expect(page).to have_link("Sign Out")
     within(".nav") do
       expect(page).to have_link("My Profile")
