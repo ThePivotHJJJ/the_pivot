@@ -192,3 +192,14 @@ footer h3 {
 #site .item-show-photo img {
   padding-top: 30px;
 }
+
+#site .item-show-photo form {
+  padding: 0;
+}
+
+/*** Bid button ***/
+
+#site input[type=submit].bid-button {
+  padding: 10px 20px;
+  margin: 0;
+}

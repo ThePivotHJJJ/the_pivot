@@ -10,7 +10,7 @@
             <h3>Item won for <%= format_price(@item.max_bid) %></h3>
           <% else %>
             <% if @item.bid? %>
-              <%= button_to "Bid", bids_path(item: @item.id) %>
+              <%= button_to "Bid", bids_path(item: @item.id), class: "btn btn-default bid-button" %>
             <% else %>
               <%= link_to "Buy it now", cart_items_path(item_id: @item.id), method: :post, class: "btn btn-default" %>
             <% end %>
