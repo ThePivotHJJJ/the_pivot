@@ -21,10 +21,6 @@ class Item < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  def self.favorite_items
-    joins(:tags).where(tags: {name: "faves"})
-  end
-
   def self.all_active
     Item.all.each { |item| item.active }
   end
@@ -54,5 +50,14 @@ class Item < ActiveRecord::Base
 
   def max_bid_user
     bids.where(bid_price: max_bid).first.user
+  end
+
+  def update_bid(bid)
+    if self.bids.any?
+      bid.update(bid_price: self.max_bid + 100)
+    else
+      bid.update(bid_price: self.price + 100)
+    end
+    bid.save
   end
 end

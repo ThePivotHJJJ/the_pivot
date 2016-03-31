@@ -2,7 +2,7 @@
   <div class="items">
    <div class="row text-center">
      <h1>All Items</h1>
-    <% @items.each do |item| %>
+    <% @shop_items.each do |item| %>
     <%= render partial: './item_column', locals: { item: item } %>
     <% end %>
     </div>

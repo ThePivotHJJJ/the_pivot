@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_cart
   before_action :authorize!
-  helper_method :current_user, :format_price, :find_item
+  helper_method :current_user, :format_price, :find_item, :visitor_must_login
 
   def set_cart
     @cart = Cart.new(session[:cart])
@@ -33,5 +33,12 @@ class ApplicationController < ActionController::Base
 
   def format_price(number)
     "$#{sprintf('%.2f', number.to_f/100)}"
+  end
+
+  def visitor_must_login
+    if !current_user
+      flash[:info] = "Please login or create a new account."
+      redirect_to login_path
+    end
   end
 end
