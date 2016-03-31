@@ -1,29 +1,33 @@
-<div class="container text-center">
+<div class="row text-center">
+  <%= render partial: "partials/sidebar" %>
+
+<div class="col-md-4 col-xs-12">
   <% if platform_admin? %>
     <h1> Hello, <%= current_user.username %>! </h1>
     <h2> Manage The Site </h2>
     <div class="col-md-6">
-    <h3><%= link_to "Manage Stores", admin_shops_path, class: "btn btn-primary btn-large" %></h3>
-  </div>
-  <div class="col-md-6">
-    <h3><%= link_to "Manage Admins", admin_users_path, class: "btn btn-primary btn-large" %></h3>
-  </div>
+      <h3><%= link_to "Manage Stores", admin_shops_path, class: "btn btn-primary btn-large" %></h3>
+    </div>
+    <div class="col-md-6">
+      <h3><%= link_to "Manage Admins", admin_users_path, class: "btn btn-primary btn-large" %></h3>
+    </div>
   <% else business_admin? %>
     <h1> <%= current_user.shop.name %> </h1>
-  <h2>Manage My Shop</h2>
-  <div class="col-md-6">
-    <h3><%= link_to "Edit Shop Name", edit_shop_path(current_user.shop), class: "btn btn-primary btn-large" %></h3>
-  </div>
-  <div class="col-md-6">
-    <h3><%= link_to "Add new item", new_admin_item_path, class: "btn btn-primary btn-large" %></h3>
-  </div>
-  <div class="col-md-6">
-    <h3><%= link_to "View all bids", admin_bids_path, class: "btn btn-primary btn-large" %></h3>
-  </div>
-  <div class="text-center hero">
+    <h2>Manage My Shop</h2>
     <div class="col-md-6">
-      <h3><%= link_to "View all orders", admin_orders_path, class: "btn btn-primary btn-large" %></h3>
+      <h3><%= link_to "Edit Shop Name", edit_shop_path(current_user.shop), class: "btn btn-primary btn-large" %></h3>
     </div>
-  </div>
+    <div class="col-md-6">
+      <h3><%= link_to "Add new item", new_admin_item_path, class: "btn btn-primary btn-large" %></h3>
+    </div>
+    <div class="col-md-6">
+      <h3><%= link_to "View all bids", admin_bids_path, class: "btn btn-primary btn-large" %></h3>
+    </div>
+    <div class="text-center hero">
+      <div class="col-md-6">
+        <h3><%= link_to "View all orders", admin_orders_path, class: "btn btn-primary btn-large" %></h3>
+      </div>
+    </div>
   <% end %>
+  </div>
 </div>
