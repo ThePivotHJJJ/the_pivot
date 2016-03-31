@@ -14,14 +14,6 @@ class Cart
     contents.reject! { |id| id == item_id.to_s }
   end
 
-  def total_items
-    contents.values.sum
-  end
-
-  def has_items?
-    total_items > 0
-  end
-
   def total_price
     prices = cart_items.map do |cart_item|
       (cart_item.quantity * cart_item.price)
