@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    if current_user.business_admin?
+    if current_user.platform_admin?
+      redirect_to platform_admin_dashboard_path
+    elsif current_user.business_admin?
       redirect_to admin_dashboard_path
     else
       current_user
