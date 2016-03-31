@@ -11,14 +11,15 @@ feature "business admin can update order" do
     within "tr:nth-child(3)" do
       expect(page).to have_content "ordered"
       click_link "Mark As Paid"
-save_and_open_page
-      expect(page).to have_content "paid"
     end
+    
+    expect(page).to have_content "You have successfully updated Order"
 
     within "tr:nth-child(4)" do
       expect(page).to have_content "ordered"
       click_link "Cancel"
-      expect(page).to have_content "cancelled"
     end
+
+    expect(page).to have_content "You have successfully updated Order"
   end
 end
