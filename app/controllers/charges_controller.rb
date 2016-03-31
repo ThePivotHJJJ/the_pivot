@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
 
   order = Order.last
   order.update_status_paid
-  flash[:success] = "Thank you for your contribution of #{format_price(@amount)}!"
+  flash[:success] = "Thank you for your purchase!"
   redirect_to order_path(order)
 
   rescue Stripe::CardError => e

@@ -1,4 +1,4 @@
-class Admin::BidsController < Admin::BaseController
+class Admin::BidsController < ApplicationController
   def index
     shop_items = current_user.shop.items
     @item_bids = shop_items.map do |item|

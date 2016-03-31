@@ -2,11 +2,7 @@ class OrdersController < ApplicationController
   around_action :wrap_in_transaction, only: :create
 
   def index
-    if current_user
-      @orders = current_user.orders
-    else
-      render file: "/public/404"
-    end
+    @orders = current_user.orders
   end
 
   def show
@@ -22,8 +18,7 @@ class OrdersController < ApplicationController
       session[:cart].clear
       redirect_to new_charge_path(order: @order)
     else
-      flash[:info] = "Please login or create a new account before checking out."
-      redirect_to login_path
+      visitor_must_login
     end
   end
 

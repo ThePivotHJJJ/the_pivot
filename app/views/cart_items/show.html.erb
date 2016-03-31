@@ -1,4 +1,4 @@
-<h1 class="text-center">.your_shopping_cart</h1>
+<h1 class="text-center">Your Shopping Cart</h1>
 ​
 <div class="container">
   <table class="table table-striped">
@@ -12,6 +12,7 @@
       </tr>
     </thead>
     <tbody>
+      <% if @cart_items != [] %>
       <% @cart_items.each do |item| %>
         <div id="item-info">
           <tr>
@@ -38,4 +39,7 @@
       </tr>
     </tbody>
   </table>
+  <% else %>
+  <h3>Your cart is empty!</h3>
+  <% end %>
 </div>
