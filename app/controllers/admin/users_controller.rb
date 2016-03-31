@@ -8,7 +8,8 @@ class Admin::UsersController < Admin::BaseController
     change_admin_status
   end
 
-private
+  private
+  
   def change_admin_status
     if @user.shop_id != nil
       remove_business_admin
