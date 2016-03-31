@@ -3,3 +3,16 @@
     <h1>All your collectables<br>in one spot.</h1>
   </section>
 </div>
+
+<section class="container featured-items">
+  <div class="row">
+    <h2>Featured Items</h2>
+    <% @featured_items.each do |item| %>
+      <div class="item-box col-md-3 col-xs-12">
+        <h2><%= link_to item.title, shop_item_path(shop: item.shop.slug, id: item.id) %></h2>
+        <%= link_to(image_tag(item.image), shop_item_path(shop: item.shop.slug, id: item.id)) %>
+        <h3><%= format_price(item.price) %></h3>
+      </div>
+    <% end %>
+  </div>
+</section>

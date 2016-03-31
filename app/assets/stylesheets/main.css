@@ -142,3 +142,19 @@ footer h3 {
   padding-bottom: 10px;
   text-align: center;
 }
+
+/*** Featured Items ***/
+
+#site .featured-items {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#site .item-box h2,
+#site .item-box h3 {
+  font-size: 2rem;
+}
+
+#site .item-box img {
+  max-width: 100%;
+}
