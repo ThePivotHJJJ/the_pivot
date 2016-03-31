@@ -214,3 +214,10 @@ footer h3 {
 #site .table-form form {
   padding-top: 0;
 }
+
+/*** Admin Stying ***/
+
+#site .add-admin input[type=submit],
+#site .remove-admin input[type=submit] {
+  margin-bottom: 40px;
+}
