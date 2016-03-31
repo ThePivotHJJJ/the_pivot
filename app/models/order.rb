@@ -18,13 +18,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def self.status_breakdown
-    grouped = group(:status).order("count_status desc").count(:status)
-    changed = grouped.map do | k, v |
-      [statuses.key(k), v]
-    end.to_h
-  end
-
   def update_status_paid
     update(status: 1)
   end
