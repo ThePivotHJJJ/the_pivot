@@ -113,7 +113,7 @@ module Helpers
 
     fill_in "Username",  with: "Misty"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "brock@gmail.com"
     click_on "Create Account"
 
     click_on "Sign Out"

@@ -1,25 +1,41 @@
 <div class="shop-admins">
   <h1>Current Shop Admins</h1>
   <div id="admin-list">
-    <% if platform_admin? %>
-      <% @admins.each do |user| %>
-        <div id="admin-<%=user.id%>">
-          <%= link_to "Remove #{user.username} as shop admin", admin_user_path(user), method: :put %>
-        </div>
-      <% end %>
-    <% else business_admin? %>
       <% @shop_admins.each do |user| %>
         <div class="admin">
-          <%= link_to "Remove #{user.username} as shop admin", admin_user_path(user), method: :put %>
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td> <%= user.username %> </td>
+                  <td> <%= user.email %> </td>
+                </tr>
+            </tbody>
+            </table>
         </div>
       <% end %>
-    <% end %>
   </div>
 </div>
 
-<div class="non-admin-users">
-  <h1>Other Users</h1>
-  <% @non_admin_users.each do |user| %>
-    <%= link_to "Make #{user.username} shop admin", admin_user_path(user), method: :put %>
-  <% end %>
+<div class="add-admin">
+<h3>Add business admin</h3>
+<%= form_for(@user, url: manage_admins_path, method: :put) do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit "Add business admin" %>
+<% end %>
+</div>
+
+<div class="remove-admin">
+<h3>Remove business admin</h3>
+<%= form_for(@user, url: manage_admins_path, method: :delete) do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit "Remove business admin" %>
+<% end %>
 </div>

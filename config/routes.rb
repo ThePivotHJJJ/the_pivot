@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :bids, only: [:index]
   end
 
+  put "/manage_admins", to: "manage_admins#update"
+  delete "/manage_admins", to: "manage_admins#destroy"
+
   resources :cart_items, only: [:create]
   get "/cart", to: "cart_items#show"
   delete "/cart", to: "cart_items#destroy"
