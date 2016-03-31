@@ -1,8 +1,16 @@
-<h1>Edit Shop</h1>
-<h4>Current name: <%= @shop.name %> </h4>
-<h4>Update shop name</h4>
-<%= form_for @shop, url: update_shop_path(@shop.id) do |f| %>
-  <h4><%= f.label :name %></h4>
-  <h4><%= f.text_field :name %></h4>
-  <h4><%= f.submit "Save", class: "btn btn-default btn-font-size"  %></h4>
-<% end %>
+<div class="row text-left">
+  <%= render partial: "partials/sidebar" %>
+
+  <div class="col-md-6 col-xs-12">
+    <h1>Edit Shop</h1>
+    <h4>Current name: <%= @shop.name %> </h4>
+
+    <%= form_for @shop, url: update_shop_path(@shop.id) do |f| %>
+      <div class="form-group">
+        <h4><%= f.label :name %></h4>
+        <h4><%= f.text_field :name, class: "form-control" %></h4>
+      </div>
+      <h4><%= f.submit "Save", class: "btn btn-primary col-xs-12"  %></h4>
+    <% end %>
+  </div>
+</div>
