@@ -1,10 +1,12 @@
 <div class="container">
   <div class="items" id="shop-list">
-   <div class="row text-center">
+   <div class="row">
       <h1>All Shops</h1>
       <% @shops.each do |shop| %>
         <div id="shop">
-          <%= link_to shop.name, shop_path(shop: shop.slug) %>
+          <h2>
+            <%= link_to shop.name, shop_path(shop: shop.slug) %>
+          </h2>
         </div>
       <% end %>
     </div>

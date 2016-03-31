@@ -34,6 +34,8 @@ class Seed
       email:    "andrew@turing.io"
     )
     user.roles << Role.find_by(name: "business_admin")
+    shop = Shop.create(name: "Andrew's Party Plaza")
+    user.update(shop_id: shop.id)
     puts "#{user.username} was created!"
   end
 
@@ -103,7 +105,7 @@ class Seed
 
     def add_items(shop)
       Tag.all.each do |tag|
-        50.times do |i|
+        25.times do |i|
           item = tag.items.create!(
             title: Faker::Commerce.product_name,
             description: Faker::Lorem.paragraph,
@@ -111,8 +113,18 @@ class Seed
             image: "https://unsplash.it/300/?random",
             shop_id: shop.id
           )
-          puts "Item #{i}: Item created for #{tag.name} and #{shop.name}"
         end
+        25.times do |i|
+          item = tag.items.create!(
+            title: Faker::Commerce.product_name,
+            description: Faker::Lorem.paragraph,
+            price: Faker::Commerce.price(1..1000.0),
+            image: "https://unsplash.it/300/?random",
+            shop_id: shop.id,
+            bid: true
+          )
+        end
+        puts "Item: It was created!"
       end
     end
 end
