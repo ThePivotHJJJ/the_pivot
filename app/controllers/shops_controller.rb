@@ -4,7 +4,8 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @shop_items = Shop.find_by(slug: params[:shop]).items
+    @shop = Shop.find_by(slug: params[:shop])
+    @shop_items = @shop.items
   end
 
   def new

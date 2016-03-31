@@ -12,6 +12,5 @@ feature "user can view dashboard" do
     expect(page).to have_content("Edit My Profile")
     expect(page).to have_content("My Bids")
     expect(page).to have_content("My Orders")
-    expect(page).to have_content("Manage My Shop")
   end
 end
