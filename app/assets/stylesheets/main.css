@@ -130,3 +130,15 @@ footer {
 footer h3 {
   color: #FFA500;
 }
+
+/*** Alerts ***/
+
+#site .alert-info,
+#site .alert-success,
+#site .alert-danger,
+#site .alert-notice {
+  font-size: 2.2rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
