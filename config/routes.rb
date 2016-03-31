@@ -17,6 +17,17 @@ Rails.application.routes.draw do
     resources :bids, only: [:index]
   end
 
+  namespace :platform_admin do
+    get "/dashboard", to: "users#show"
+    resources :users, only: [:index]
+    put "/manage_admins", to: "manage_admins#update"
+    delete "/manage_admins", to: "manage_admins#destroy"
+    resources :shops, only: [:index, :edit, :update]
+  end
+
+  put "/manage_admins", to: "manage_admins#update"
+  delete "/manage_admins", to: "manage_admins#destroy"
+
   resources :cart_items, only: [:create]
   get "/cart", to: "cart_items#show"
   delete "/cart", to: "cart_items#destroy"

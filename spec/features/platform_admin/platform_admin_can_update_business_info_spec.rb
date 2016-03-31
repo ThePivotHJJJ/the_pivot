@@ -2,17 +2,16 @@ require "rails_helper"
 
 feature "platform admin can update a shop's name" do
   scenario "they see the new shop name" do
-    pending
     create_roles
     create_business_admin_and_shop
     logout
     create_platform_admin
 
-    expect(current_path).to eq admin_dashboard_path
+    expect(current_path).to eq platform_admin_dashboard_path
 
     click_on "Manage Stores"
 
-    expect(current_path).to eq admin_shops_path
+    expect(current_path).to eq platform_admin_shops_path
 
     within("#shop-#{Shop.all.last.id}") do
       expect(page).to have_content("Double J's Yummy Snack Party")
@@ -22,9 +21,7 @@ feature "platform admin can update a shop's name" do
     fill_in "Name", with: "Jim's Questionable Quantum Curios"
     click_on "Save"
 
-    expect(current_path).to eq admin_dashboard_path
-
-    click_on "Manage Stores"
+    expect(current_path).to eq platform_admin_shops_path
 
     within("#shop-#{Shop.all.last.id}") do
       expect(page).to have_content("Jim's Questionable Quantum Curios")

@@ -8,12 +8,16 @@
               <tr>
                 <th>Username</th>
                 <th>Email</th>
+                <th>Shop</th>
+                <th>Shop ID</th>
               </tr>
             </thead>
             <tbody>
                 <tr>
                   <td> <%= user.username %> </td>
                   <td> <%= user.email %> </td>
+                  <td> <%= user.shop.name %> </td>
+                  <td> <%= user.shop_id %> </td>
                 </tr>
             </tbody>
             </table>
@@ -24,16 +28,18 @@
 
 <div class="add-admin">
 <h3>Add business admin</h3>
-<%= form_for(@user, url: manage_admins_path, method: :put) do |f| %>
+<%= form_for(@user, url: platform_admin_manage_admins_path, method: :put) do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %>
+  <%= f.label :shop_id %>
+  <%= f.text_field :shop_id %>
   <%= f.submit "Add business admin" %>
 <% end %>
 </div>
 
 <div class="remove-admin">
 <h3>Remove business admin</h3>
-<%= form_for(@user, url: manage_admins_path, method: :delete) do |f| %>
+<%= form_for(@user, url: platform_admin_manage_admins_path, method: :delete) do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.submit "Remove business admin" %>

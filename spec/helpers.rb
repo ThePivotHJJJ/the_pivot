@@ -25,7 +25,7 @@ module Helpers
 
     fill_in "Username",  with: "Brock"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "brock@gmail.com"
     click_on "Create Account"
 
     click_on "Sign Out"
@@ -113,7 +113,7 @@ module Helpers
 
     fill_in "Username",  with: "Misty"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "misty@gmail.com"
     click_on "Create Account"
 
     click_on "Sign Out"
@@ -128,12 +128,13 @@ module Helpers
 
     fill_in "Username",  with: "Ash"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "ash@gmail.com"
 
     click_on "Create Account"
 
     click_on "Sign Out"
   end
+
   def create_platform_admin
     create_roles
 
@@ -145,7 +146,7 @@ module Helpers
 
     fill_in "Username",  with: "Jim"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "jim@gmail.com"
     click_on "Create Account"
 
     click_on "Sign Out"
@@ -153,7 +154,6 @@ module Helpers
     user = User.find_by(username: "Jim")
     user.roles << Role.find_by(name: "platform_admin")
     login(user)
-    visit admin_dashboard_path
   end
 
   def create_second_business_admin_and_shop
@@ -167,7 +167,7 @@ module Helpers
 
     fill_in "Username",  with: "Sock"
     fill_in "Password",  with: "password"
-    fill_in "Email", with: "mistyqtestemail@gmail.com"
+    fill_in "Email", with: "sock@gmail.com"
     click_on "Create Account"
 
     click_on "Sign Out"
