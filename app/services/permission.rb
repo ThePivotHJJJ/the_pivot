@@ -33,6 +33,8 @@ private
 
   def platform_admin_permissions
     return true if @controller == "admin/shops" && @action.in?(%w(index))
+    return true if @controller == "platform_admin/users" && @action.in?(%w(show index))
+    return true if @controller == "platform_admin/manage_admins" && @action.in?(%w(update destroy))
     business_admin_permissions
   end
 

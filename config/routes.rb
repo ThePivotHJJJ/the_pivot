@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     resources :bids, only: [:index]
   end
 
+  namespace :platform_admin do
+    get "/dashboard", to: "users#show"
+    resources :users, only: [:index]
+    put "/manage_admins", to: "manage_admins#update"
+    delete "/manage_admins", to: "manage_admins#destroy"
+  end
+
   put "/manage_admins", to: "manage_admins#update"
   delete "/manage_admins", to: "manage_admins#destroy"
 

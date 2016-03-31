@@ -41,4 +41,18 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def remove_business_admin
+    user = User.find_by(email: params[:user][:email])
+    business_admin_role = Role.find_by(name: "business_admin")
+    UserRole.find_by(role_id: business_admin_role.id, user_id: user.id).destroy
+    user.update(shop_id: nil)
+    user.save
+  end
+
+  def add_business_admin(shop_id)
+    user = User.find_by(email: params[:user][:email])
+    user.update(shop_id: shop_id)
+    user.roles << Role.find_by(name: "business_admin")
+  end
 end

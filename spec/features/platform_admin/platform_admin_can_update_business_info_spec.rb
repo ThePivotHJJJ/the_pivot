@@ -8,7 +8,7 @@ feature "platform admin can update a shop's name" do
     logout
     create_platform_admin
 
-    expect(current_path).to eq admin_dashboard_path
+    expect(current_path).to eq platform_admin_dashboard_path
 
     click_on "Manage Stores"
 
