@@ -34,6 +34,8 @@ class Seed
       email:    "andrew@turing.io"
     )
     user.roles << Role.find_by(name: "business_admin")
+    shop = Shop.create(name: "Andrew's Party Plaza")
+    user.update(shop_id: shop.id)
     puts "#{user.username} was created!"
   end
 
