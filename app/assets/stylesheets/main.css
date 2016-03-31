@@ -203,3 +203,14 @@ footer h3 {
   padding: 10px 20px;
   margin: 0;
 }
+
+/*** Update button ***/
+
+#site input[type=submit].update-btn {
+  margin: 0;
+  padding: 10px;
+}
+
+#site .table-form form {
+  padding-top: 0;
+}
