@@ -18,11 +18,4 @@ describe Cart, type: :model do
     expect(@cart.contents).to eq({ "2" => 2 })
   end
 
-  it "can calculate total number of items" do
-    expect(@cart.total_items).to eq(3)
-  end
-
-  it "can check if it has items" do
-    expect(@cart.has_items?).to be_truthy
-  end
 end
