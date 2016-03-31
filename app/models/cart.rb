@@ -14,12 +14,10 @@ class Cart
     contents.reject! { |id| id == item_id.to_s }
   end
 
-  def total_items
-    contents.values.sum
-  end
-
-  def has_items?
-    total_items > 0
+  def cart_items
+    contents.map do |item_id, quantity|
+      CartItem.new(item_id, quantity)
+    end
   end
 
   def total_price
@@ -27,11 +25,5 @@ class Cart
       (cart_item.quantity * cart_item.price)
     end
     prices.reduce(:+)
-  end
-
-  def cart_items
-    contents.map do |item_id, quantity|
-      CartItem.new(item_id, quantity)
-    end
   end
 end

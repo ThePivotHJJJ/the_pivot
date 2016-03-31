@@ -19,4 +19,21 @@ feature "business admin can create shop item" do
     expect(page).to have_content "this is all the lulz you could imagine!!"
     expect(page).to have_content "$1.00"
   end
+
+  scenario "invalid item input" do
+    create_business_admin_and_shop
+
+    visit admin_dashboard_path
+
+    click_link "Add new item"
+
+    fill_in "Title",       with: ""
+    fill_in "Description", with: ""
+    fill_in "Price",       with: 300
+    fill_in "Tags",        with: ""
+    attach_file "Image", "spec/assets/singer-reimagined-porsche-911.jpg"
+    click_button "add new item!"
+
+    expect(page).to have_content "Invalid Entry, Try again."
+  end
 end
