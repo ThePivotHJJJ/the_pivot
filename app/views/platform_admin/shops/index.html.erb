@@ -5,7 +5,7 @@
       <% @shops.each do |shop| %>
         <div id="shop-<%=shop.id%>">
           <%= link_to shop.name, shop_path(shop: shop.slug) %>
-          <%= link_to "Edit Shop", edit_shop_path(id: shop.id)%>
+          <%= link_to "Edit Shop", edit_platform_admin_shop_path(id: shop.id, shop: shop.slug)%>
         </div>
       <% end %>
     </div>

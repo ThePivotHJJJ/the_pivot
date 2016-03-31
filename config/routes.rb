@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
     put "/manage_admins", to: "manage_admins#update"
     delete "/manage_admins", to: "manage_admins#destroy"
+    resources :shops, only: [:index, :edit, :update]
   end
 
   put "/manage_admins", to: "manage_admins#update"

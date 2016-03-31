@@ -35,6 +35,7 @@ private
     return true if @controller == "admin/shops" && @action.in?(%w(index))
     return true if @controller == "platform_admin/users" && @action.in?(%w(show index))
     return true if @controller == "platform_admin/manage_admins" && @action.in?(%w(update destroy))
+    return true if @controller == "platform_admin/shops" && @action.in?(%w(index edit update ))
     business_admin_permissions
   end
 
