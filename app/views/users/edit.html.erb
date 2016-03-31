@@ -1,8 +1,14 @@
-<h1>Edit My Profile</h1>
-<h4>Current username: <%= @user.username %> </h4>
-<h4>Update username</h4>
-<%= form_for @user do |f| %>
-  <h4><%= f.label :username %></h4>
-  <h4><%= f.text_field :username %></h4>
-  <h4><%= f.submit "Save", class: "btn btn-default btn-font-size"  %></h4>
-<% end %>
+<div class="row text-center">
+  <%= render partial: "partials/sidebar" %>
+
+  <div class="col-md-4 col-xs-12">
+    <h1>Edit My Profile</h1>
+    <h4>Current username: <%= @user.username %> </h4>
+    <h4>Update username</h4>
+    <%= form_for @user do |f| %>
+      <h4><%= f.label :username %></h4>
+      <h4><%= f.text_field :username %></h4>
+      <h4><%= f.submit "Save", class: "btn btn-default btn-font-size"  %></h4>
+    <% end %>
+  </div>
+</div>

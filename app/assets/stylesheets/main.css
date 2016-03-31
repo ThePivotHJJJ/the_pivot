@@ -177,3 +177,14 @@ footer h3 {
 #site .item h3 {
   font-size: 1.6rem;
 }
+
+/*** User Sidebar ***/
+
+#site .user-sidebar {
+  padding-left: 10%;
+  padding-top: 0.5%;
+}
+
+#site .user-sidebar h3 {
+  font-size: 1.4rem;
+}
