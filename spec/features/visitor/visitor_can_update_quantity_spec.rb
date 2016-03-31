@@ -25,7 +25,7 @@ feature "visitor can increase quantity of buy it now" do
     end
 
     select(2)
-    click_on "Update Quantity"
+    click_on "Update"
 
     expect(current_path).to eq cart_path
 
