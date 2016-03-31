@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "platform admin can manage other admins" do
   scenario "they demote an admin" do
+    pending
     create_roles
     create_business_admin_and_shop
     logout

@@ -21,7 +21,11 @@
           <td><%= bid.item.description %></td>
           <td><%= format_price(current_user.latest_bid(bid.item.id)) %></td>
           <td><%= format_price(bid.item.max_bid) %></td>
-          <td class="status-<%= bid.item.id %>"><%= item_status(bid, current_user) %></td>
+          <% if ItemStatusPresenter.bid_status(bid, current_user) == "Won" %>
+          <td class="status-<%= bid.item.id %>"><%= winning_bid_link(bid.item.id) %></td>
+          <% else %>
+          <td class="status-<%= bid.item.id %>"><%= ItemStatusPresenter.bid_status(bid, current_user) %></td>
+          <% end %>
         </tr>
         <% end %>
       <% end %>

@@ -11,7 +11,6 @@ class CartItemsController < ApplicationController
   end
 
   def show
-    ids = session[:cart]
     @cart_items = @cart.cart_items
   end
 
@@ -20,11 +19,7 @@ class CartItemsController < ApplicationController
     @cart.remove_item(item.id)
     flash[:success] = "Successfully removed item
     #{view_context.link_to item.title, item_path(item.id)}"
-    if @cart.contents.empty?
-      redirect_to items_path
-    else
-      redirect_to cart_path
-    end
+    redirect_to cart_path
   end
 
   def update

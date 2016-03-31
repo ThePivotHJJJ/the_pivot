@@ -4,16 +4,12 @@ class ShopsController < ApplicationController
   end
 
   def show
-    @shop = Shop.find_by(slug: params[:shop])
-    @items = @shop.items
+    @shop_items = Shop.find_by(slug: params[:shop]).items
   end
 
   def new
     @shop = Shop.new
-    if !current_user
-      flash[:info] = "Please login or create a new account."
-      redirect_to login_path
-    end
+    visitor_must_login
   end
 
   def create
@@ -29,19 +25,11 @@ class ShopsController < ApplicationController
   end
 
   def edit
-    if current_user.platform_admin?
-      @shop = Shop.find(params[:id])
-    else
-      @shop = current_user.shop
-    end
+    @shop = current_user.shop
   end
 
   def update
-    if current_user.platform_admin?
-      @shop = Shop.find(params[:id])
-    else
-      @shop = current_user.shop
-    end
+    @shop = current_user.shop
     if @shop.update(shop_params)
       redirect_to admin_dashboard_path
     else

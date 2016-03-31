@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-    @orders = Order.all
+    @orders = current_user.shop.orders
     @grid = OrdersGrid.new(params[:orders_grid]) do |scope|
       scope.page(params[:page])
     end

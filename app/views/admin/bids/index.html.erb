@@ -20,7 +20,7 @@
           <td><%= bid.item.description %></td>
           <td><%= bid.user.username %></td>
           <td><%= format_price(bid.bid_price) %></td>
-          <td class="status-<%= bid.item.id %>"><%= admin_item_status(bid) %></td>
+          <td class="status-<%= bid.item.id %>"><%= ItemStatusPresenter.admin_bid_status(bid)%></td>
         </tr>
       <% end %>
     </tbody>
